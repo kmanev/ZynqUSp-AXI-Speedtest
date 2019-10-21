@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2.1 (64-bit)
+# SW Build 2288692 on Thu Jul 26 18:24:02 MDT 2018
+# IP Build 2289599 on Thu Jul 26 21:09:20 MDT 2018
+# Start of session at: Wed Oct 16 14:46:50 2019
+# Process ID: 2404
+# Current directory: D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.runs/impl_1
+# Command line: vivado.exe -log IP_Test_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source IP_Test_wrapper.tcl -notrace
+# Log file: D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.runs/impl_1/IP_Test_wrapper.vdi
+# Journal file: D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source IP_Test_wrapper.tcl -notrace

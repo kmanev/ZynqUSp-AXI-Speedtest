@@ -1,0 +1,534 @@
+#include <stdio.h>
+#include "platform.h"
+#include "xil_printf.h"
+#include "stdlib.h"
+
+    volatile int* HP0  = 0xA0000000;
+    volatile int* HP1  = 0xA0001000;
+    volatile int* HP2  = 0xA0002000;
+    volatile int* HP3  = 0xA0003000;
+    volatile int* HPC0 = 0xA0004000;
+    volatile int* HPC1 = 0xA0005000;
+    volatile int* ACP  = 0xA0006000;
+/*
+0: axi_c_read_data <= write_start_DDR_address;
+1: axi_c_read_data <= write_step_DDR_address;
+2: axi_c_read_data <= write_count_bursts_per_reset;
+3: axi_c_read_data <= write_burst_size;
+4: axi_c_read_data <= write_ticks_per_burst;
+
+5: axi_c_read_data <= read_start_DDR_address;
+6: axi_c_read_data <= read_step_DDR_address;
+7: axi_c_read_data <= read_count_bursts_per_reset;
+8: axi_c_read_data <= read_burst_size;
+9: axi_c_read_data <= read_ticks_per_burst;
+
+10: axi_c_read_data <= {30'd0, active_write, active_read};
+11: axi_c_read_data <= runtime[63:32];
+12: axi_c_read_data <= runtime[31:0];
+13: axi_c_read_data <= writePackets;
+14: axi_c_read_data <= readPackets;
+15: axi_c_read_data <= debug_axi_control;
+16: axi_c_read_data <= debug_axi_r_control;*/
+    int do_reads = 1;
+    int do_writes = 1;
+void configure_AXI(		volatile int* base_address,
+						int write_startAddress, int write_burstSize, int write_addressJump, int write_jumpsCount, int write_cyclesPerBurst,
+						int read_startAddress, int read_burstSize, int read_addressJump, int read_jumpsCount, int read_cyclesPerBurst,
+						int write_blocking_ratio, int read_blocking_ratio)
+{
+	volatile int* write_start_DDR_address = base_address + 1;
+	volatile int* write_step_DDR_address = base_address + 2;
+	volatile int* write_count_bursts_per_reset = base_address + 3;
+	volatile int* write_burst_size = base_address + 4;
+	volatile int* write_ticks_per_burst = base_address + 5;
+
+	volatile int* read_start_DDR_address = base_address + 9;
+	volatile int* read_step_DDR_address = base_address + 10;
+	volatile int* read_count_bursts_per_reset = base_address + 11;
+	volatile int* read_burst_size = base_address + 12;
+	volatile int* read_ticks_per_burst = base_address + 13;
+
+	volatile int* runtime_h = base_address + 18;
+	volatile int* runtime_l = base_address + 19;
+
+	volatile int* writePackets = base_address + 20;
+	volatile int* readPackets = base_address + 21;
+
+	volatile int* latency_h = base_address + 22;
+	volatile int* latency_l = base_address + 23;
+
+	volatile int* write_max_queue = base_address + 6;
+	volatile int* read_max_queue = base_address + 14;
+
+	volatile int* write_ratio = base_address + 30;
+	volatile int* read_ratio = base_address + 31;
+
+	*write_start_DDR_address = write_startAddress;
+	*write_step_DDR_address = write_addressJump;
+	*write_count_bursts_per_reset = write_jumpsCount;
+	*write_burst_size = write_burstSize;
+	*write_ticks_per_burst = write_cyclesPerBurst;
+
+
+	*read_start_DDR_address = read_startAddress;
+	*read_step_DDR_address = read_addressJump;
+	*read_count_bursts_per_reset = read_jumpsCount;
+	*read_burst_size = read_burstSize;
+	*read_ticks_per_burst = read_cyclesPerBurst;
+
+	*runtime_h = 0;
+	*runtime_l = 0;
+	*writePackets = 0;
+	*readPackets = 0;
+	*latency_h = 0;
+	*latency_l = 0;
+
+	*write_max_queue = 5;
+	*read_max_queue = 50;
+
+	*write_ratio = write_blocking_ratio;
+	*read_ratio = read_blocking_ratio;
+}
+void start_AXI(volatile int* base_address, int start_blocking_mode, int start_write, int start_read){
+	volatile int* active = base_address + 16;
+	int writeVal;
+	if(start_blocking_mode)
+		writeVal = 8;
+	else
+		writeVal = (do_writes << 1) | (do_reads);
+	*active = writeVal;
+}
+void stop_AXI(volatile int* base_address){
+	volatile int* active = base_address + 16;
+	*active = 0;
+}
+void wait_AXI(volatile int* base_address){
+	volatile int* active = base_address + 16;
+	while ((*active) != 0);
+
+}
+void reset_AXI(volatile int* base_address){
+	volatile int* active = base_address + 16;
+	*active = 4;
+	wait_AXI(base_address); // wait for the reset to actually execute
+}
+void print_AXI(volatile int* base_address){
+	volatile int* runtime_h = base_address + 18;
+	volatile int* runtime_l = base_address + 19;
+
+	volatile int* writePackets = base_address + 20;
+	volatile int* readPackets = base_address + 21;
+
+	volatile int* latency_h = base_address + 22;
+	volatile int* latency_l = base_address + 23;
+
+	uint32_t readOut_rh, readOut_rl, readOut_writePackets, readOut_readPackets, readOut_lh, readOut_ll;
+
+	readOut_rh = *runtime_h;
+	readOut_rl = *runtime_l;
+	readOut_writePackets = *writePackets;
+	readOut_readPackets = *readPackets;
+	readOut_lh = *latency_h;
+	readOut_ll = *latency_l;
+	uint64_t runtime = ((uint64_t)(readOut_rh)<<32) | readOut_rl;
+	uint64_t latency = ((uint64_t)(readOut_lh)<<32) | readOut_ll;
+
+	printf("%lu ; %lu ; %lu ; %lu", runtime, latency, readOut_writePackets, readOut_readPackets);
+}
+void start_AXIs_Independent(int wburst_0, int wjump_0, int wwaittime_0,
+							int rburst_0, int rjump_0, int rwaittime_0,
+							int wburst_1, int wjump_1, int wwaittime_1,
+							int rburst_1, int rjump_1, int rwaittime_1,
+							int wburst_2, int wjump_2, int wwaittime_2,
+							int rburst_2, int rjump_2, int rwaittime_2,
+							int wburst_3, int wjump_3, int wwaittime_3,
+							int rburst_3, int rjump_3, int rwaittime_3,
+							int wburst_4, int wjump_4, int wwaittime_4,
+							int rburst_4, int rjump_4, int rwaittime_4,
+							int wburst_5, int wjump_5, int wwaittime_5,
+							int rburst_5, int rjump_5, int rwaittime_5,
+							int wburst_6, int wjump_6, int wwaittime_6,
+							int rburst_6, int rjump_6, int rwaittime_6,
+							int do_blocking_sequence, int write_blocking_ratio,  int read_blocking_ratio,
+							int sHP0,int sHP1,int sHP2,int sHP3,int sHPC0,int sHPC1,int sACP){
+	reset_AXI(HP0);
+	configure_AXI(HP0, 0x20000000, wburst_0, wjump_0, (0x4000000/wjump_0), wwaittime_0, 0x24000000, rburst_0, rjump_0, (0x4000000/rjump_0), rwaittime_0, write_blocking_ratio, read_blocking_ratio);
+	reset_AXI(HP1);
+	configure_AXI(HP1, 0x28000000, wburst_1, wjump_1, (0x4000000/wjump_1), wwaittime_1, 0x2C000000, rburst_1, rjump_1, (0x4000000/rjump_1), rwaittime_1, write_blocking_ratio, read_blocking_ratio);
+	//configure_AXI(HP1, 0x20000000, wburst_1, wjump_1, (0x4000000/wjump_1), wwaittime_1, 0x24000000, rburst_1, rjump_1, (0x4000000/rjump_1), rwaittime_1, write_blocking_ratio, read_blocking_ratio);
+	reset_AXI(HP2);
+	configure_AXI(HP2, 0x30000000, wburst_2, wjump_2, (0x4000000/wjump_2), wwaittime_2, 0x34000000, rburst_2, rjump_2, (0x4000000/rjump_2), rwaittime_2, write_blocking_ratio, read_blocking_ratio);
+	reset_AXI(HP3);
+	configure_AXI(HP3, 0x38000000, wburst_3, wjump_3, (0x4000000/wjump_3), wwaittime_3, 0x3C000000, rburst_3, rjump_3, (0x4000000/rjump_3), rwaittime_3, write_blocking_ratio, read_blocking_ratio);
+	/*reset_AXI(HPC0);
+	configure_AXI(HP0, 0x40000000, wburst_4, wjump_4, (0x4000000/wjump_4), wwaittime_4, 0x44000000, rburst_4, rjump_4, (0x4000000/rjump_4), rwaittime_4, write_blocking_ratio, read_blocking_ratio);
+	reset_AXI(HPC1);
+	configure_AXI(HP0, 0x48000000, wburst_5, wjump_5, (0x4000000/wjump_5), wwaittime_5, 0x4C000000, rburst_5, rjump_5, (0x4000000/rjump_5), rwaittime_5, write_blocking_ratio, read_blocking_ratio);
+	reset_AXI(ACP);
+	configure_AXI(HP0, 0x50000000, wburst_6, wjump_6, (0x4000000/wjump_6), wwaittime_6, 0x54000000, rburst_6, rjump_6, (0x4000000/rjump_6), rwaittime_6, write_blocking_ratio, read_blocking_ratio);
+	*/if(sHP0 > 0){
+		if(do_blocking_sequence)
+			start_AXI(HP0, 1, 0, 0);
+		else
+			start_AXI(HP0, 0, 1, 1);
+	}
+	if(sHP1 > 0){
+		if(do_blocking_sequence)
+			start_AXI(HP1, 1, 0, 0);
+		else
+			start_AXI(HP1, 0, 1, 1);
+	}
+	if(sHP2 > 0){
+		if(do_blocking_sequence)
+			start_AXI(HP2, 1, 0, 0);
+		else
+			start_AXI(HP2, 0, 1, 1);
+	}
+	if(sHP3 > 0){
+		if(do_blocking_sequence)
+			start_AXI(HP3, 1, 0, 0);
+		else
+			start_AXI(HP3, 0, 1, 1);
+	}
+	if(sHPC0 > 0){
+		if(do_blocking_sequence)
+			start_AXI(HPC0, 1, 0, 0);
+		else
+			start_AXI(HPC0, 0, 1, 1);
+	}
+	if(sHPC1 > 0){
+		if(do_blocking_sequence)
+			start_AXI(HPC1, 1, 0, 0);
+		else
+			start_AXI(HPC1, 0, 1, 1);
+	}
+	if(sACP > 0){
+		if(do_blocking_sequence)
+			start_AXI(ACP, 1, 0, 0);
+		else
+			start_AXI(ACP, 0, 1, 1);
+	}
+	sleep(5);
+
+    stop_AXI(HP0);
+    stop_AXI(HP1);
+    stop_AXI(HP2);
+    stop_AXI(HP3);
+    /*stop_AXI(HPC0);
+    stop_AXI(HPC1);
+    stop_AXI(ACP);*/
+
+    wait_AXI(HP0);
+    wait_AXI(HP1);
+    wait_AXI(HP2);
+    wait_AXI(HP3);
+    /*wait_AXI(HPC0);
+    wait_AXI(HPC1);
+    wait_AXI(ACP);*/
+}
+
+uint32_t writePackets_d [7][10];
+uint32_t readPackets_d [7][10];
+uint32_t maxLatency_d [7][10];
+uint64_t runtime_d [7][10];
+uint64_t latency_d [7][10];
+void save_AXI_details(volatile int* base_address, int axi_num, int run_num){
+	volatile int* runtime_h = base_address + 18;
+	volatile int* runtime_l = base_address + 19;
+
+	volatile int* writePackets = base_address + 20;
+	volatile int* readPackets = base_address + 21;
+
+	volatile int* latency_h = base_address + 22;
+	volatile int* latency_l = base_address + 23;
+
+	volatile int* max_latency = base_address + 24;
+
+	uint32_t readOut_rh, readOut_rl, readOut_writePackets, readOut_readPackets, readOut_lh, readOut_ll, readOut_maxLatency;
+
+	readOut_rh = *runtime_h;
+	readOut_rl = *runtime_l;
+	readOut_writePackets = *writePackets;
+	readOut_readPackets = *readPackets;
+	readOut_lh = *latency_h;
+	readOut_ll = *latency_l;
+	readOut_maxLatency = *max_latency;
+
+	uint64_t runtime = ((uint64_t)(readOut_rh)<<32) | readOut_rl;
+	uint64_t latency = ((uint64_t)(readOut_lh)<<32) | readOut_ll;
+
+	writePackets_d[axi_num][run_num] = readOut_writePackets;
+	readPackets_d[axi_num][run_num] = readOut_readPackets;
+	runtime_d[axi_num][run_num] = runtime;
+	latency_d[axi_num][run_num] = latency;
+	maxLatency_d[axi_num][run_num] = readOut_maxLatency;
+}
+void print_saved_AXI_details(volatile int* base_address, int axi_num){
+	uint64_t writePackets_sum = 0, readPackets_sum = 0, runtime_sum = 0, latency_sum = 0;
+	uint64_t writePackets_min = 0xFFFFFFFF, readPackets_min = 0xFFFFFFFF, runtime_min = 0xFFFFFFFF, latency_min = 0xFFFFFFFF;
+	uint64_t writePackets_max = 0, readPackets_max = 0, runtime_max = 0, latency_max = 0;
+	uint64_t latency_max_min = 0xFFFFFFFF, latency_max_sum = 0, latency_max_max = 0;
+	int i;/*
+	for(i = 0 ; i < 10 ; i++){
+		writePackets_sum += writePackets_d[axi_num][i];
+		readPackets_sum += readPackets_d[axi_num][i];
+		runtime_sum += runtime_d[axi_num][i];
+		latency_sum += latency_d[axi_num][i];
+		latency_max_sum += maxLatency_d[axi_num][i];
+
+		if(writePackets_min > writePackets_d[axi_num][i]) writePackets_min = writePackets_d[axi_num][i];
+		if(readPackets_min > readPackets_d[axi_num][i]) readPackets_min = readPackets_d[axi_num][i];
+		if(runtime_min > runtime_d[axi_num][i]) runtime_min = runtime_d[axi_num][i];
+		if(latency_min > latency_d[axi_num][i]) latency_min = latency_d[axi_num][i];
+
+		if(writePackets_max < writePackets_d[axi_num][i]) writePackets_max = writePackets_d[axi_num][i];
+		if(readPackets_max < readPackets_d[axi_num][i]) readPackets_max = readPackets_d[axi_num][i];
+		if(runtime_max < runtime_d[axi_num][i]) runtime_max = runtime_d[axi_num][i];
+		if(latency_max < latency_d[axi_num][i]) latency_max = latency_d[axi_num][i];
+
+		if(latency_max_min > maxLatency_d[axi_num][i]) latency_max_min = maxLatency_d[axi_num][i];
+		if(latency_max_max < maxLatency_d[axi_num][i]) latency_max_max = maxLatency_d[axi_num][i];
+	}*/
+	/*printf("%lu ; %lu ; %lu ; %lu ; %lu ; %lu ; %lu ; %lu ; %lu ; %lu ; %lu ; %lu ; %lu ; %lu ; %lu",
+							writePackets_min, (writePackets_sum/10), writePackets_max,
+							readPackets_min, (readPackets_sum/10), readPackets_max,
+							runtime_min, (runtime_sum/10), runtime_max,
+							latency_min, (latency_sum/10), latency_max,
+							latency_max_min, (latency_max_sum/10), latency_max_max);*/
+	for(i = 0 ; i < 10 ; i++)printf("%lu ;",  writePackets_d[axi_num][i]);
+	for(i = 0 ; i < 10 ; i++)printf("%lu ;",  readPackets_d[axi_num][i]);
+	for(i = 0 ; i < 10 ; i++)printf("%lu ;",  runtime_d[axi_num][i]);
+	for(i = 0 ; i < 10 ; i++)printf("%lu ;",  latency_d[axi_num][i]);
+	for(i = 0 ; i < 10 ; i++)printf("%lu ;",  maxLatency_d[axi_num][i]);
+}
+void zero_AXI_details(){
+	int i,j;
+	for(i = 0 ; i < 7 ; i++)
+		for(j = 0 ; j < 10 ; j++){
+			writePackets_d[i][j] = 0;
+			readPackets_d[i][j] = 0;
+			runtime_d[i][j] = 0;
+			latency_d[i][j] = 0;
+			maxLatency_d[i][j] = 0;
+		}
+}
+void run10_AXIs_Independent(int wburst_0, int wjump_0, int wwaittime_0,
+							int rburst_0, int rjump_0, int rwaittime_0,
+							int wburst_1, int wjump_1, int wwaittime_1,
+							int rburst_1, int rjump_1, int rwaittime_1,
+							int wburst_2, int wjump_2, int wwaittime_2,
+							int rburst_2, int rjump_2, int rwaittime_2,
+							int wburst_3, int wjump_3, int wwaittime_3,
+							int rburst_3, int rjump_3, int rwaittime_3,
+							int wburst_4, int wjump_4, int wwaittime_4,
+							int rburst_4, int rjump_4, int rwaittime_4,
+							int wburst_5, int wjump_5, int wwaittime_5,
+							int rburst_5, int rjump_5, int rwaittime_5,
+							int wburst_6, int wjump_6, int wwaittime_6,
+							int rburst_6, int rjump_6, int rwaittime_6,
+							int do_blocking_sequence, int write_blocking_ratio,  int read_blocking_ratio,
+							int sHP0,int sHP1,int sHP2,int sHP3,int sHPC0,int sHPC1,int sACP){
+	int i;
+	zero_AXI_details();
+	for(i = 0 ; i < 10 ; i++){
+		start_AXIs_Independent(  wburst_0,  wjump_0,  wwaittime_0,
+								 rburst_0,  rjump_0,  rwaittime_0,
+								 wburst_1,  wjump_1,  wwaittime_1,
+								 rburst_1,  rjump_1,  rwaittime_1,
+								 wburst_2,  wjump_2,  wwaittime_2,
+								 rburst_2,  rjump_2,  rwaittime_2,
+								 wburst_3,  wjump_3,  wwaittime_3,
+								 rburst_3,  rjump_3,  rwaittime_3,
+								 wburst_4,  wjump_4,  wwaittime_4,
+								 rburst_4,  rjump_4,  rwaittime_4,
+								 wburst_5,  wjump_5,  wwaittime_5,
+								 rburst_5,  rjump_5,  rwaittime_5,
+								 wburst_6,  wjump_6,  wwaittime_6,
+								 rburst_6,  rjump_6,  rwaittime_6,
+								 do_blocking_sequence, write_blocking_ratio, read_blocking_ratio,
+								 sHP0, sHP1, sHP2, sHP3, sHPC0, sHPC1, sACP);
+		if(sHP0 > 0){
+			save_AXI_details(HP0, 0, i);
+		}
+		if(sHP1 > 0){
+			save_AXI_details(HP1, 1, i);
+		}
+		if(sHP2 > 0){
+			save_AXI_details(HP2, 2, i);
+		}
+		if(sHP3 > 0){
+			save_AXI_details(HP3, 3, i);
+		}
+	}
+	printf(" ; ");
+	if(sHP0)printf("_HP0");
+	if(sHP1)printf("_HP1");
+	if(sHP2)printf("_HP2");
+	if(sHP3)printf("_HP3");
+	if(sHPC0)printf("_HPC0");
+	if(sHPC1)printf("_HPC1");
+	if(sACP)printf("_ACP");
+	printf(" ; %d ; %d ; %d ; %d ; ", wburst_0, wjump_0, rburst_0, rjump_0);
+	print_saved_AXI_details(HP0, 0);//printf(" ; ");
+	print_saved_AXI_details(HP1, 1);//printf(" ; ");
+	print_saved_AXI_details(HP2, 2);//printf(" ; ");
+	print_saved_AXI_details(HP3, 3);//printf(" ; ");
+	print_saved_AXI_details(HPC0, 4);//printf(" ; ");
+	print_saved_AXI_details(HPC1, 5);//printf(" ; ");
+	print_saved_AXI_details(ACP, 6);
+	printf("\n\r");
+}
+int get_next_power2(int n){
+	int i;
+	for(i = 2 ; n < i ; i*=2);
+	return i;
+}
+void combo_single_run_random(int sHP0,int sHP1,int sHP2,int sHP3,int sHPC0,int sHPC1,int sACP){
+	int i;
+    printf("Test");
+    if(sHP0)printf("_HP0");
+    if(sHP1)printf("_HP1");
+    if(sHP2)printf("_HP2");
+    if(sHP3)printf("_HP3");
+    if(sHPC0)printf("_HPC0");
+    if(sHPC1)printf("_HPC1");
+    if(sACP)printf("_ACP");
+    printf("\n\r");
+    for(i = 0 ; i < 256 ; i+=((i<31)?1:8)){
+		run10_AXIs_Independent(
+								(i+1), 4096*17 + (i+1)*16, 1, //HP0
+								(i+1), 4096*17 + (i+1)*16, 1,
+								(i+1), 4096*17 + (i+1)*16, 1, //HP1
+								(i+1), 4096*17 + (i+1)*16, 1,
+								(i+1), 4096*17 + (i+1)*16, 1, //HP2
+								(i+1), 4096*17 + (i+1)*16, 1,
+								(i+1), 4096*17 + (i+1)*16, 1, //HP3
+								(i+1), 4096*17 + (i+1)*16, 1,
+								(i+1), 4096*17 + (i+1)*16, 1, //HPC0
+								(i+1), 4096*17 + (i+1)*16, 1,
+								(i+1), 4096*17 + (i+1)*16, 1, //HPC1
+								(i+1), 4096*17 + (i+1)*16, 1,
+								(i+1), 4096*17 + (i+1)*16, 1, //ACP
+								(i+1), 4096*17 + (i+1)*16, 1,
+								0, 0, 0, // blocking ratio
+								sHP0, sHP1, sHP2, sHP3, sHPC0, sHPC1, sACP);
+    }
+}
+void combo_single_run(int sHP0,int sHP1,int sHP2,int sHP3,int sHPC0,int sHPC1,int sACP){
+	int i;
+    printf("Test");
+    if(sHP0)printf("_HP0");
+    if(sHP1)printf("_HP1");
+    if(sHP2)printf("_HP2");
+    if(sHP3)printf("_HP3");
+    if(sHPC0)printf("_HPC0");
+    if(sHPC1)printf("_HPC1");
+    if(sACP)printf("_ACP");
+    printf("\n\r");
+    for(i = 0 ; i < 256 ; i+=((i<31)?1:8)){
+		run10_AXIs_Independent(
+								(i+1), (i+1)*16, 1, //HP0
+								(i+1), (i+1)*16, 1,
+								(i+1), (i+1)*16, 1, //HP1
+								(i+1), (i+1)*16, 1,
+								(i+1), (i+1)*16, 1, //HP2
+								(i+1), (i+1)*16, 1,
+								(i+1), (i+1)*16, 1, //HP3
+								(i+1), (i+1)*16, 1,
+								(i+1), (i+1)*16, 1, //HPC0
+								(i+1), (i+1)*16, 1,
+								(i+1), (i+1)*16, 1, //HPC1
+								(i+1), (i+1)*16, 1,
+								(i+1), (i+1)*16, 1, //ACP
+								(i+1), (i+1)*16, 1,
+								0, 0, 0, // blocking ratio
+								sHP0, sHP1, sHP2, sHP3, sHPC0, sHPC1, sACP);
+    }
+}
+void test_combo_HP(){ // sequential access HP
+	//1 AXI
+	combo_single_run(1, 0, 0, 0, 0, 0, 0);
+	combo_single_run(0, 1, 0, 0, 0, 0, 0);
+	combo_single_run(0, 0, 1, 0, 0, 0, 0);
+	combo_single_run(0, 0, 0, 1, 0, 0, 0);
+	//2 AXIs
+	combo_single_run(1, 1, 0, 0, 0, 0, 0);
+	combo_single_run(1, 0, 1, 0, 0, 0, 0);
+	combo_single_run(1, 0, 0, 1, 0, 0, 0);
+	combo_single_run(0, 1, 1, 0, 0, 0, 0);
+	combo_single_run(0, 1, 0, 1, 0, 0, 0);
+	combo_single_run(0, 0, 1, 1, 0, 0, 0);
+	//3 AXIs
+	combo_single_run(0, 1, 1, 1, 0, 0, 0);
+	combo_single_run(1, 0, 1, 1, 0, 0, 0);
+	combo_single_run(1, 1, 0, 1, 0, 0, 0);
+	combo_single_run(1, 1, 1, 0, 0, 0, 0);
+	//4 AXIs
+	combo_single_run(1, 1, 1, 1, 0, 0, 0);
+}
+void test_combo_HP_random(){ // sequential access HP
+	//1 AXI
+	combo_single_run_random(1, 0, 0, 0, 0, 0, 0);
+	combo_single_run_random(0, 1, 0, 0, 0, 0, 0);
+	combo_single_run_random(0, 0, 1, 0, 0, 0, 0);
+	combo_single_run_random(0, 0, 0, 1, 0, 0, 0);
+	//2 AXIs
+	combo_single_run_random(1, 1, 0, 0, 0, 0, 0);
+	combo_single_run_random(1, 0, 1, 0, 0, 0, 0);
+	combo_single_run_random(1, 0, 0, 1, 0, 0, 0);
+	combo_single_run_random(0, 1, 1, 0, 0, 0, 0);
+	combo_single_run_random(0, 1, 0, 1, 0, 0, 0);
+	combo_single_run_random(0, 0, 1, 1, 0, 0, 0);
+	//3 AXIs
+	combo_single_run_random(0, 1, 1, 1, 0, 0, 0);
+	combo_single_run_random(1, 0, 1, 1, 0, 0, 0);
+	combo_single_run_random(1, 1, 0, 1, 0, 0, 0);
+	combo_single_run_random(1, 1, 1, 0, 0, 0, 0);
+	//4 AXIs
+	combo_single_run_random(1, 1, 1, 1, 0, 0, 0);
+}
+void changeToBestEffort(){
+    volatile int* ddr_qos_ctrl = 0xFD090000;
+    volatile int* ddr_qos_en_throttle = 0xFD090004;
+    volatile int* hrd_tres = 0xFD090008;
+    volatile int* lrd_tres = 0xFD09000C;
+    volatile int* wr_tres = 0xFD090010;
+    *ddr_qos_ctrl = 0x45;
+    //*ddr_qos_ctrl = 0xA845;
+    *ddr_qos_en_throttle = 0x00400000;
+    *hrd_tres = 0;
+    *lrd_tres = 0;
+    *wr_tres = 0;
+
+}
+void changeHP0ReadPriority(){
+    volatile int* read_priority = 0xFD380008;
+    volatile int* axi_priority = 0xFD38001C;
+    *read_priority = 3;
+    *axi_priority = 3;
+}
+int main()
+{
+    init_platform();
+    int i;
+    int* malloc1G = malloc(1024 *1024 *1024);
+    //changeToBestEffort();
+    //changeHP0ReadPriority();
+   /* printf("READ ONLY CONFIGURATION \n\r");
+    do_reads = 1;
+    do_writes = 0;
+	test_combo_HP();
+    printf("WRITE ONLY CONFIGURATION \n\r");
+    do_reads = 0;
+    do_writes = 1;
+	test_combo_HP();*/
+    //printf("NON SEQUENTIAL CONFIGURATION \n\r");
+    //test_combo_HP_random();
+    printf("BASE CONFIGURATION \n\r");
+	combo_single_run(1, 0, 0, 1, 0, 0, 0);
+
+    cleanup_platform();
+    return 0;
+}
+

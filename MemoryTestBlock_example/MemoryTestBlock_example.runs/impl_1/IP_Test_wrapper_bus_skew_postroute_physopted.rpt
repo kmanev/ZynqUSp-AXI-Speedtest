@@ -1,0 +1,16 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2018.2.1 (win64) Build 2288692 Thu Jul 26 18:24:02 MDT 2018
+| Date              : Wed Oct 16 14:52:33 2019
+| Host              : DESKTOP-UAK7KP3 running 64-bit major release  (build 9200)
+| Command           : report_bus_skew -warn_on_violation -file IP_Test_wrapper_bus_skew_postroute_physopted.rpt -pb IP_Test_wrapper_bus_skew_postroute_physopted.pb -rpx IP_Test_wrapper_bus_skew_postroute_physopted.rpx
+| Design            : IP_Test_wrapper
+| Device            : xczu3eg-sbva484
+| Speed File        : -1  PRODUCTION 1.21 06-28-2018
+| Temperature Grade : E
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bus Skew Report
+
+No bus skew constraints
+

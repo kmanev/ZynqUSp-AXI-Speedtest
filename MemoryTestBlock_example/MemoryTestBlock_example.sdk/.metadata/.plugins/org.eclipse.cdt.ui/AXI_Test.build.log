@@ -1,0 +1,50 @@
+15:22:06 **** Incremental Build of configuration Debug for project AXI_Test ****
+make all 
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v8 gcc compiler'
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -I../../AXI_Test_bsp/psu_cortexa53_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'print_AXI':
+../src/helloworld.c:68:11: warning: unused variable 'rb' [-Wunused-variable]
+  uint64_t rb = *(p+16);
+           ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:75:31: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     volatile uint32_t* HP0  = 0xA0000000; // You can configure here the slave addresses of the control AXI ports
+                               ^~~~~~~~~~
+../src/helloworld.c:76:31: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     volatile uint32_t* HP1  = 0xA0001000; // for the accelerators
+                               ^~~~~~~~~~
+../src/helloworld.c:77:31: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     volatile uint32_t* HP2  = 0xA0002000; //
+                               ^~~~~~~~~~
+../src/helloworld.c:78:31: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     volatile uint32_t* HP3  = 0xA0003000; //
+                               ^~~~~~~~~~
+../src/helloworld.c:81:23: warning: implicit declaration of function 'malloc' [-Wimplicit-function-declaration]
+     int* malloc1_5G = malloc(1280*1024*1024);
+                       ^~~~~~
+../src/helloworld.c:81:23: warning: incompatible implicit declaration of built-in function 'malloc'
+../src/helloworld.c:81:23: note: include '<stdlib.h>' or provide a declaration of 'malloc'
+../src/helloworld.c:105:5: warning: implicit declaration of function 'sleep'; did you mean 'strsep'? [-Wimplicit-function-declaration]
+     sleep(5); //sleep the CPU for some time while running the tests, careful not to wait too much as counters may overflow (PMU works on 64-bit for runtime,latency and 32-bit for other measurements)
+     ^~~~~
+     strsep
+../src/helloworld.c:81:10: warning: unused variable 'malloc1_5G' [-Wunused-variable]
+     int* malloc1_5G = malloc(1280*1024*1024);
+          ^~~~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: AXI_Test.elf'
+'Invoking: ARM v8 gcc linker'
+aarch64-none-elf-gcc -Wl,-T -Wl,../src/lscript.ld -L../../AXI_Test_bsp/psu_cortexa53_0/lib -o "AXI_Test.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: AXI_Test.elf'
+' '
+'Invoking: ARM v8 Print Size'
+aarch64-none-elf-size AXI_Test.elf  |tee "AXI_Test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  74488	   4600	1744834840	1744913928	68014608	AXI_Test.elf
+'Finished building: AXI_Test.elf.size'
+' '
+
+15:22:07 Build Finished (took 1s.364ms)
+

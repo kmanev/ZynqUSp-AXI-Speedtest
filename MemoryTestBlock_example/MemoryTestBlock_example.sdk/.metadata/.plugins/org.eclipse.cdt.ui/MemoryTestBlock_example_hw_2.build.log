@@ -1,0 +1,55 @@
+15:20:31 **** Build of configuration Debug for project MemoryTestBlock_example_hw_2 ****
+make all 
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v8 gcc compiler'
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -I../../MemoryTestBlock_example_hw_2_bsp/psu_cortexa53_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'print_AXI':
+../src/helloworld.c:68:11: warning: unused variable 'rb' [-Wunused-variable]
+  uint64_t rb = *(p+16);
+           ^~
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:75:31: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     volatile uint32_t* HP0  = 0xA0000000; // You can configure here the slave addresses of the control AXI ports
+                               ^~~~~~~~~~
+../src/helloworld.c:76:31: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     volatile uint32_t* HP1  = 0xA0001000; // for the accelerators
+                               ^~~~~~~~~~
+../src/helloworld.c:77:31: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     volatile uint32_t* HP2  = 0xA0002000; //
+                               ^~~~~~~~~~
+../src/helloworld.c:78:31: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     volatile uint32_t* HP3  = 0xA0003000; //
+                               ^~~~~~~~~~
+../src/helloworld.c:81:23: warning: implicit declaration of function 'malloc' [-Wimplicit-function-declaration]
+     int* malloc1_5G = malloc(1536*1024*1024);
+                       ^~~~~~
+../src/helloworld.c:81:23: warning: incompatible implicit declaration of built-in function 'malloc'
+../src/helloworld.c:81:23: note: include '<stdlib.h>' or provide a declaration of 'malloc'
+../src/helloworld.c:105:5: warning: implicit declaration of function 'sleep'; did you mean 'strsep'? [-Wimplicit-function-declaration]
+     sleep(5); //sleep the CPU for some time while running the tests, careful not to wait too much as counters may overflow (PMU works on 64-bit for runtime,latency and 32-bit for other measurements)
+     ^~~~~
+     strsep
+../src/helloworld.c:81:10: warning: unused variable 'malloc1_5G' [-Wunused-variable]
+     int* malloc1_5G = malloc(1536*1024*1024);
+          ^~~~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: ARM v8 gcc compiler'
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../MemoryTestBlock_example_hw_2_bsp/psu_cortexa53_0/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building target: MemoryTestBlock_example_hw_2.elf'
+'Invoking: ARM v8 gcc linker'
+aarch64-none-elf-gcc -Wl,-T -Wl,../src/lscript.ld -L../../MemoryTestBlock_example_hw_2_bsp/psu_cortexa53_0/lib -o "MemoryTestBlock_example_hw_2.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: MemoryTestBlock_example_hw_2.elf'
+' '
+'Invoking: ARM v8 Print Size'
+aarch64-none-elf-size MemoryTestBlock_example_hw_2.elf  |tee "MemoryTestBlock_example_hw_2.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  74488	   4600	1912607000	1912686088	72014608	MemoryTestBlock_example_hw_2.elf
+'Finished building: MemoryTestBlock_example_hw_2.elf.size'
+' '
+
+15:20:33 Build Finished (took 1s.618ms)
+

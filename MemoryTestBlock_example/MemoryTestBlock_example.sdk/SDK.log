@@ -1,0 +1,2698 @@
+20:12:12 INFO  : Registering command handlers for SDK TCF services
+20:12:14 INFO  : Launching XSCT server: xsct.bat -interactive E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\temp_xsdb_launch_script.tcl
+20:12:18 INFO  : XSCT server has started successfully.
+20:12:18 INFO  : Successfully done setting XSCT server connection channel  
+20:12:21 INFO  : Successfully done setting SDK workspace  
+20:12:21 INFO  : Processing command line option -hwspec E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper.hdf.
+20:16:32 INFO  : Registering command handlers for SDK TCF services
+20:16:33 INFO  : Launching XSCT server: xsct.bat -interactive E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\temp_xsdb_launch_script.tcl
+20:16:36 INFO  : XSCT server has started successfully.
+20:16:36 INFO  : Successfully done setting XSCT server connection channel  
+20:16:36 INFO  : Processing command line option -hwspec E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper.hdf.
+20:16:36 INFO  : Successfully done setting SDK workspace  
+20:18:43 INFO  : Registering command handlers for SDK TCF services
+20:18:43 INFO  : Launching XSCT server: xsct.bat -interactive E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\temp_xsdb_launch_script.tcl
+20:18:45 INFO  : XSCT server has started successfully.
+20:18:45 INFO  : Successfully done setting XSCT server connection channel  
+20:18:46 INFO  : Processing command line option -hwspec E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper.hdf.
+20:18:46 INFO  : Successfully done setting SDK workspace  
+20:18:46 INFO  : Checking for hwspec changes in the project IP_Test_wrapper_hw_platform_0.
+20:19:53 INFO  : Refreshed build settings on project AXI_Test
+20:59:36 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+20:59:37 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+20:59:37 INFO  : 'jtag frequency' command is executed.
+20:59:37 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+20:59:37 INFO  : Context for 'APU' is selected.
+20:59:38 INFO  : System reset is completed.
+20:59:41 INFO  : 'after 3000' command is executed.
+20:59:41 INFO  : Context for 'APU' is selected.
+20:59:41 INFO  : Cleared APU and A53 resets
+20:59:41 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+20:59:45 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+20:59:45 INFO  : Context for 'APU' is selected.
+20:59:45 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+20:59:45 INFO  : 'configparams force-mem-access 1' command is executed.
+20:59:45 INFO  : Context for 'APU' is selected.
+20:59:45 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+20:59:46 INFO  : 'psu_init' command is executed.
+20:59:47 INFO  : 'after 1000' command is executed.
+20:59:47 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+20:59:48 INFO  : 'after 1000' command is executed.
+20:59:48 INFO  : 'psu_ps_pl_reset_config' command is executed.
+20:59:48 INFO  : 'catch {psu_protection}' command is executed.
+20:59:48 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+20:59:48 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+20:59:49 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+20:59:49 INFO  : 'configparams force-mem-access 0' command is executed.
+20:59:49 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+20:59:49 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+20:59:49 INFO  : 'con' command is executed.
+20:59:49 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+20:59:49 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+21:01:03 INFO  : Disconnected from the channel tcfchan#1.
+21:01:04 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:01:11 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+21:01:11 INFO  : 'jtag frequency' command is executed.
+21:01:11 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+21:01:12 INFO  : Context for 'APU' is selected.
+21:01:12 INFO  : System reset is completed.
+21:01:15 INFO  : 'after 3000' command is executed.
+21:01:15 INFO  : Context for 'APU' is selected.
+21:01:16 INFO  : Cleared APU and A53 resets
+21:01:16 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+21:01:19 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+21:01:19 INFO  : Context for 'APU' is selected.
+21:01:19 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+21:01:19 INFO  : 'configparams force-mem-access 1' command is executed.
+21:01:19 INFO  : Context for 'APU' is selected.
+21:01:19 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+21:01:20 INFO  : 'psu_init' command is executed.
+21:01:21 INFO  : 'after 1000' command is executed.
+21:01:21 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+21:01:22 INFO  : 'after 1000' command is executed.
+21:01:22 INFO  : 'psu_ps_pl_reset_config' command is executed.
+21:01:23 INFO  : 'catch {psu_protection}' command is executed.
+21:01:23 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:01:23 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+21:01:23 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+21:01:23 INFO  : 'configparams force-mem-access 0' command is executed.
+21:01:23 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:01:23 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:01:23 INFO  : 'con' command is executed.
+21:01:23 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+21:01:23 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+21:03:16 INFO  : Disconnected from the channel tcfchan#2.
+21:03:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:03:25 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+21:03:25 INFO  : 'jtag frequency' command is executed.
+21:03:25 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+21:03:25 INFO  : Context for 'APU' is selected.
+21:03:26 INFO  : System reset is completed.
+21:03:29 INFO  : 'after 3000' command is executed.
+21:03:29 INFO  : Context for 'APU' is selected.
+21:03:29 INFO  : Cleared APU and A53 resets
+21:03:29 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+21:03:32 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+21:03:32 INFO  : Context for 'APU' is selected.
+21:03:33 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+21:03:33 INFO  : 'configparams force-mem-access 1' command is executed.
+21:03:33 INFO  : Context for 'APU' is selected.
+21:03:33 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+21:03:34 INFO  : 'psu_init' command is executed.
+21:03:35 INFO  : 'after 1000' command is executed.
+21:03:35 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+21:03:36 INFO  : 'after 1000' command is executed.
+21:03:36 INFO  : 'psu_ps_pl_reset_config' command is executed.
+21:03:36 INFO  : 'catch {psu_protection}' command is executed.
+21:03:36 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:03:36 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+21:03:36 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+21:03:36 INFO  : 'configparams force-mem-access 0' command is executed.
+21:03:36 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:03:36 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:03:37 INFO  : 'con' command is executed.
+21:03:37 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+21:03:37 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+21:04:07 INFO  : Disconnected from the channel tcfchan#3.
+21:04:08 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:04:15 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+21:04:15 INFO  : 'jtag frequency' command is executed.
+21:04:15 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+21:04:15 INFO  : Context for 'APU' is selected.
+21:04:16 INFO  : System reset is completed.
+21:04:19 INFO  : 'after 3000' command is executed.
+21:04:19 INFO  : Context for 'APU' is selected.
+21:04:19 INFO  : Cleared APU and A53 resets
+21:04:20 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+21:04:23 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+21:04:23 INFO  : Context for 'APU' is selected.
+21:04:23 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+21:04:23 INFO  : 'configparams force-mem-access 1' command is executed.
+21:04:23 INFO  : Context for 'APU' is selected.
+21:04:23 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+21:04:24 INFO  : 'psu_init' command is executed.
+21:04:25 INFO  : 'after 1000' command is executed.
+21:04:25 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+21:04:26 INFO  : 'after 1000' command is executed.
+21:04:26 INFO  : 'psu_ps_pl_reset_config' command is executed.
+21:04:26 INFO  : 'catch {psu_protection}' command is executed.
+21:04:26 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:04:26 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+21:04:27 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+21:04:27 INFO  : 'configparams force-mem-access 0' command is executed.
+21:04:27 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:04:27 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:04:27 INFO  : 'con' command is executed.
+21:04:27 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+21:04:27 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+21:07:14 INFO  : Disconnected from the channel tcfchan#4.
+21:07:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:07:22 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+21:07:22 INFO  : 'jtag frequency' command is executed.
+21:07:22 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+21:07:22 INFO  : Context for 'APU' is selected.
+21:07:23 INFO  : System reset is completed.
+21:07:26 INFO  : 'after 3000' command is executed.
+21:07:26 INFO  : Context for 'APU' is selected.
+21:07:27 INFO  : Cleared APU and A53 resets
+21:07:27 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+21:07:30 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+21:07:30 INFO  : Context for 'APU' is selected.
+21:07:30 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+21:07:30 INFO  : 'configparams force-mem-access 1' command is executed.
+21:07:30 INFO  : Context for 'APU' is selected.
+21:07:30 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+21:07:31 INFO  : 'psu_init' command is executed.
+21:07:32 INFO  : 'after 1000' command is executed.
+21:07:32 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+21:07:33 INFO  : 'after 1000' command is executed.
+21:07:33 INFO  : 'psu_ps_pl_reset_config' command is executed.
+21:07:33 INFO  : 'catch {psu_protection}' command is executed.
+21:07:33 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:07:34 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+21:07:34 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+21:07:34 INFO  : 'configparams force-mem-access 0' command is executed.
+21:07:34 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:07:34 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:07:34 INFO  : 'con' command is executed.
+21:07:34 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+21:07:34 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+21:09:13 INFO  : Disconnected from the channel tcfchan#5.
+21:09:14 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:09:22 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+21:09:22 INFO  : 'jtag frequency' command is executed.
+21:09:22 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+21:09:22 INFO  : Context for 'APU' is selected.
+21:09:23 INFO  : System reset is completed.
+21:09:26 INFO  : 'after 3000' command is executed.
+21:09:26 INFO  : Context for 'APU' is selected.
+21:09:26 INFO  : Cleared APU and A53 resets
+21:09:26 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+21:09:29 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+21:09:29 INFO  : Context for 'APU' is selected.
+21:09:30 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+21:09:30 INFO  : 'configparams force-mem-access 1' command is executed.
+21:09:30 INFO  : Context for 'APU' is selected.
+21:09:30 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+21:09:31 INFO  : 'psu_init' command is executed.
+21:09:32 INFO  : 'after 1000' command is executed.
+21:09:32 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+21:09:33 INFO  : 'after 1000' command is executed.
+21:09:33 INFO  : 'psu_ps_pl_reset_config' command is executed.
+21:09:33 INFO  : 'catch {psu_protection}' command is executed.
+21:09:33 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:09:33 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+21:09:33 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+21:09:33 INFO  : 'configparams force-mem-access 0' command is executed.
+21:09:33 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:09:33 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:09:33 INFO  : 'con' command is executed.
+21:09:33 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+21:09:33 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+21:11:16 INFO  : Disconnected from the channel tcfchan#6.
+21:11:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:11:24 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+21:11:24 INFO  : 'jtag frequency' command is executed.
+21:11:24 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+21:11:24 INFO  : Context for 'APU' is selected.
+21:11:25 INFO  : System reset is completed.
+21:11:28 INFO  : 'after 3000' command is executed.
+21:11:28 INFO  : Context for 'APU' is selected.
+21:11:28 INFO  : Cleared APU and A53 resets
+21:11:28 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+21:11:32 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+21:11:32 INFO  : Context for 'APU' is selected.
+21:11:32 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+21:11:32 INFO  : 'configparams force-mem-access 1' command is executed.
+21:11:32 INFO  : Context for 'APU' is selected.
+21:11:32 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+21:11:33 INFO  : 'psu_init' command is executed.
+21:11:34 INFO  : 'after 1000' command is executed.
+21:11:34 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+21:11:35 INFO  : 'after 1000' command is executed.
+21:11:35 INFO  : 'psu_ps_pl_reset_config' command is executed.
+21:11:35 INFO  : 'catch {psu_protection}' command is executed.
+21:11:35 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:11:35 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+21:11:36 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+21:11:36 INFO  : 'configparams force-mem-access 0' command is executed.
+21:11:36 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:11:36 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:11:36 INFO  : 'con' command is executed.
+21:11:36 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+21:11:36 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+21:12:23 INFO  : Disconnected from the channel tcfchan#7.
+21:12:24 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:12:31 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+21:12:31 INFO  : 'jtag frequency' command is executed.
+21:12:31 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+21:12:31 INFO  : Context for 'APU' is selected.
+21:12:32 INFO  : System reset is completed.
+21:12:35 INFO  : 'after 3000' command is executed.
+21:12:35 INFO  : Context for 'APU' is selected.
+21:12:35 INFO  : Cleared APU and A53 resets
+21:12:35 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+21:12:39 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+21:12:39 INFO  : Context for 'APU' is selected.
+21:12:39 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+21:12:39 INFO  : 'configparams force-mem-access 1' command is executed.
+21:12:39 INFO  : Context for 'APU' is selected.
+21:12:39 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+21:12:40 INFO  : 'psu_init' command is executed.
+21:12:41 INFO  : 'after 1000' command is executed.
+21:12:41 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+21:12:42 INFO  : 'after 1000' command is executed.
+21:12:42 INFO  : 'psu_ps_pl_reset_config' command is executed.
+21:12:42 INFO  : 'catch {psu_protection}' command is executed.
+21:12:42 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:12:42 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+21:12:43 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+21:12:43 INFO  : 'configparams force-mem-access 0' command is executed.
+21:12:43 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:12:43 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:12:43 INFO  : 'con' command is executed.
+21:12:43 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+21:12:43 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+21:14:44 INFO  : Disconnected from the channel tcfchan#8.
+21:14:45 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:14:54 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+21:14:54 INFO  : 'jtag frequency' command is executed.
+21:14:54 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+21:14:54 INFO  : Context for 'APU' is selected.
+21:14:55 INFO  : System reset is completed.
+21:14:58 INFO  : 'after 3000' command is executed.
+21:14:58 INFO  : Context for 'APU' is selected.
+21:14:58 INFO  : Cleared APU and A53 resets
+21:14:58 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+21:15:02 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+21:15:02 INFO  : Context for 'APU' is selected.
+21:15:02 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+21:15:02 INFO  : 'configparams force-mem-access 1' command is executed.
+21:15:02 INFO  : Context for 'APU' is selected.
+21:15:02 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+21:15:04 INFO  : 'psu_init' command is executed.
+21:15:05 INFO  : 'after 1000' command is executed.
+21:15:05 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+21:15:06 INFO  : 'after 1000' command is executed.
+21:15:06 INFO  : 'psu_ps_pl_reset_config' command is executed.
+21:15:06 INFO  : 'catch {psu_protection}' command is executed.
+21:15:06 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:15:06 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+21:15:06 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+21:15:06 INFO  : 'configparams force-mem-access 0' command is executed.
+21:15:06 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:15:06 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:15:07 INFO  : 'con' command is executed.
+21:15:07 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+21:15:07 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+21:16:52 INFO  : Disconnected from the channel tcfchan#9.
+21:16:53 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:17:01 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+21:17:01 INFO  : 'jtag frequency' command is executed.
+21:17:01 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+21:17:01 INFO  : Context for 'APU' is selected.
+21:17:02 INFO  : System reset is completed.
+21:17:05 INFO  : 'after 3000' command is executed.
+21:17:05 INFO  : Context for 'APU' is selected.
+21:17:05 INFO  : Cleared APU and A53 resets
+21:17:05 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+21:17:08 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+21:17:08 INFO  : Context for 'APU' is selected.
+21:17:08 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+21:17:08 INFO  : 'configparams force-mem-access 1' command is executed.
+21:17:08 INFO  : Context for 'APU' is selected.
+21:17:09 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+21:17:10 INFO  : 'psu_init' command is executed.
+21:17:11 INFO  : 'after 1000' command is executed.
+21:17:11 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+21:17:12 INFO  : 'after 1000' command is executed.
+21:17:12 INFO  : 'psu_ps_pl_reset_config' command is executed.
+21:17:12 INFO  : 'catch {psu_protection}' command is executed.
+21:17:12 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:17:12 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+21:17:12 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+21:17:12 INFO  : 'configparams force-mem-access 0' command is executed.
+21:17:12 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:17:12 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:17:13 INFO  : 'con' command is executed.
+21:17:13 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+21:17:13 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+21:18:08 INFO  : Disconnected from the channel tcfchan#10.
+21:18:09 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+21:18:16 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+21:18:16 INFO  : 'jtag frequency' command is executed.
+21:18:16 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+21:18:17 INFO  : Context for 'APU' is selected.
+21:18:18 INFO  : System reset is completed.
+21:18:21 INFO  : 'after 3000' command is executed.
+21:18:21 INFO  : Context for 'APU' is selected.
+21:18:21 INFO  : Cleared APU and A53 resets
+21:18:21 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+21:18:24 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+21:18:24 INFO  : Context for 'APU' is selected.
+21:18:24 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+21:18:24 INFO  : 'configparams force-mem-access 1' command is executed.
+21:18:24 INFO  : Context for 'APU' is selected.
+21:18:24 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+21:18:26 INFO  : 'psu_init' command is executed.
+21:18:27 INFO  : 'after 1000' command is executed.
+21:18:27 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+21:18:28 INFO  : 'after 1000' command is executed.
+21:18:28 INFO  : 'psu_ps_pl_reset_config' command is executed.
+21:18:28 INFO  : 'catch {psu_protection}' command is executed.
+21:18:28 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:18:28 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+21:18:28 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+21:18:28 INFO  : 'configparams force-mem-access 0' command is executed.
+21:18:28 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+21:18:28 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+21:18:28 INFO  : 'con' command is executed.
+21:18:28 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+21:18:28 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+12:17:21 INFO  : Disconnected from the channel tcfchan#11.
+12:17:22 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:17:30 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+12:17:30 INFO  : 'jtag frequency' command is executed.
+12:17:30 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+12:17:30 INFO  : Context for 'APU' is selected.
+12:17:31 INFO  : System reset is completed.
+12:17:34 INFO  : 'after 3000' command is executed.
+12:17:34 INFO  : Context for 'APU' is selected.
+12:17:34 INFO  : Cleared APU and A53 resets
+12:17:34 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+12:17:38 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+12:17:38 INFO  : Context for 'APU' is selected.
+12:17:38 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+12:17:38 INFO  : 'configparams force-mem-access 1' command is executed.
+12:17:38 INFO  : Context for 'APU' is selected.
+12:17:38 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+12:17:39 INFO  : 'psu_init' command is executed.
+12:17:40 INFO  : 'after 1000' command is executed.
+12:17:40 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+12:17:41 INFO  : 'after 1000' command is executed.
+12:17:41 INFO  : 'psu_ps_pl_reset_config' command is executed.
+12:17:41 INFO  : 'catch {psu_protection}' command is executed.
+12:17:41 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:17:41 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+12:17:42 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+12:17:42 INFO  : 'configparams force-mem-access 0' command is executed.
+12:17:42 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:17:42 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:17:42 INFO  : 'con' command is executed.
+12:17:42 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+12:17:42 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+12:19:33 INFO  : Disconnected from the channel tcfchan#12.
+12:19:34 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:19:41 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+12:19:41 INFO  : 'jtag frequency' command is executed.
+12:19:41 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+12:19:42 INFO  : Context for 'APU' is selected.
+12:19:42 INFO  : System reset is completed.
+12:19:45 INFO  : 'after 3000' command is executed.
+12:19:45 INFO  : Context for 'APU' is selected.
+12:19:46 INFO  : Cleared APU and A53 resets
+12:19:46 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+12:19:49 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+12:19:49 INFO  : Context for 'APU' is selected.
+12:19:49 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+12:19:49 INFO  : 'configparams force-mem-access 1' command is executed.
+12:19:49 INFO  : Context for 'APU' is selected.
+12:19:49 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+12:19:50 INFO  : 'psu_init' command is executed.
+12:19:51 INFO  : 'after 1000' command is executed.
+12:19:51 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+12:19:52 INFO  : 'after 1000' command is executed.
+12:19:52 INFO  : 'psu_ps_pl_reset_config' command is executed.
+12:19:52 INFO  : 'catch {psu_protection}' command is executed.
+12:19:52 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:19:53 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+12:19:53 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+12:19:53 INFO  : 'configparams force-mem-access 0' command is executed.
+12:19:53 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:19:53 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:19:53 INFO  : 'con' command is executed.
+12:19:53 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+12:19:53 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+12:31:22 INFO  : Disconnected from the channel tcfchan#13.
+12:31:23 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:31:31 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+12:31:31 INFO  : 'jtag frequency' command is executed.
+12:31:31 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+12:31:31 INFO  : Context for 'APU' is selected.
+12:31:32 INFO  : System reset is completed.
+12:31:35 INFO  : 'after 3000' command is executed.
+12:31:35 INFO  : Context for 'APU' is selected.
+12:31:35 INFO  : Cleared APU and A53 resets
+12:31:35 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+12:31:38 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+12:31:39 INFO  : Context for 'APU' is selected.
+12:31:39 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+12:31:39 INFO  : 'configparams force-mem-access 1' command is executed.
+12:31:39 INFO  : Context for 'APU' is selected.
+12:31:39 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+12:31:40 INFO  : 'psu_init' command is executed.
+12:31:41 INFO  : 'after 1000' command is executed.
+12:31:41 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+12:31:42 INFO  : 'after 1000' command is executed.
+12:31:42 INFO  : 'psu_ps_pl_reset_config' command is executed.
+12:31:42 INFO  : 'catch {psu_protection}' command is executed.
+12:31:42 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:31:42 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+12:31:43 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+12:31:43 INFO  : 'configparams force-mem-access 0' command is executed.
+12:31:43 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:31:43 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:31:43 INFO  : 'con' command is executed.
+12:31:43 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+12:31:43 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+12:35:34 INFO  : Disconnected from the channel tcfchan#14.
+12:35:35 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:35:43 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+12:35:43 INFO  : 'jtag frequency' command is executed.
+12:35:43 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+12:35:43 INFO  : Context for 'APU' is selected.
+12:35:44 INFO  : System reset is completed.
+12:35:47 INFO  : 'after 3000' command is executed.
+12:35:47 INFO  : Context for 'APU' is selected.
+12:35:47 INFO  : Cleared APU and A53 resets
+12:35:47 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+12:35:50 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+12:35:50 INFO  : Context for 'APU' is selected.
+12:35:51 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+12:35:51 INFO  : 'configparams force-mem-access 1' command is executed.
+12:35:51 INFO  : Context for 'APU' is selected.
+12:35:51 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+12:35:52 INFO  : 'psu_init' command is executed.
+12:35:53 INFO  : 'after 1000' command is executed.
+12:35:53 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+12:35:54 INFO  : 'after 1000' command is executed.
+12:35:54 INFO  : 'psu_ps_pl_reset_config' command is executed.
+12:35:54 INFO  : 'catch {psu_protection}' command is executed.
+12:35:54 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:35:54 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+12:35:55 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+12:35:55 INFO  : 'configparams force-mem-access 0' command is executed.
+12:35:55 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:35:55 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:35:55 INFO  : 'con' command is executed.
+12:35:55 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+12:35:55 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+12:36:26 INFO  : Disconnected from the channel tcfchan#15.
+12:36:27 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:36:35 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+12:36:35 INFO  : 'jtag frequency' command is executed.
+12:36:35 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+12:36:35 INFO  : Context for 'APU' is selected.
+12:36:36 INFO  : System reset is completed.
+12:36:39 INFO  : 'after 3000' command is executed.
+12:36:39 INFO  : Context for 'APU' is selected.
+12:36:39 INFO  : Cleared APU and A53 resets
+12:36:39 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+12:36:42 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+12:36:42 INFO  : Context for 'APU' is selected.
+12:36:42 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+12:36:42 INFO  : 'configparams force-mem-access 1' command is executed.
+12:36:42 INFO  : Context for 'APU' is selected.
+12:36:43 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+12:36:44 INFO  : 'psu_init' command is executed.
+12:36:45 INFO  : 'after 1000' command is executed.
+12:36:45 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+12:36:46 INFO  : 'after 1000' command is executed.
+12:36:46 INFO  : 'psu_ps_pl_reset_config' command is executed.
+12:36:46 INFO  : 'catch {psu_protection}' command is executed.
+12:36:46 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:36:46 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+12:36:46 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+12:36:46 INFO  : 'configparams force-mem-access 0' command is executed.
+12:36:46 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:36:46 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:36:46 INFO  : 'con' command is executed.
+12:36:46 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+12:36:46 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+12:39:11 INFO  : Disconnected from the channel tcfchan#16.
+12:39:12 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:39:25 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+12:39:25 INFO  : 'jtag frequency' command is executed.
+12:39:25 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+12:39:25 INFO  : Context for 'APU' is selected.
+12:39:25 INFO  : System reset is completed.
+12:39:29 INFO  : 'after 3000' command is executed.
+12:39:29 INFO  : Context for 'APU' is selected.
+12:39:29 INFO  : Cleared APU and A53 resets
+12:39:29 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+12:39:32 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+12:39:32 INFO  : Context for 'APU' is selected.
+12:39:32 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+12:39:32 INFO  : 'configparams force-mem-access 1' command is executed.
+12:39:32 INFO  : Context for 'APU' is selected.
+12:39:32 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+12:39:34 INFO  : 'psu_init' command is executed.
+12:39:35 INFO  : 'after 1000' command is executed.
+12:39:35 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+12:39:36 INFO  : 'after 1000' command is executed.
+12:39:36 INFO  : 'psu_ps_pl_reset_config' command is executed.
+12:39:36 INFO  : 'catch {psu_protection}' command is executed.
+12:39:36 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:39:36 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+12:39:36 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+12:39:36 INFO  : 'configparams force-mem-access 0' command is executed.
+12:39:36 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:39:36 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:39:36 INFO  : 'con' command is executed.
+12:39:36 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+12:39:36 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+12:39:53 INFO  : Disconnected from the channel tcfchan#17.
+12:39:54 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:40:02 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+12:40:02 INFO  : 'jtag frequency' command is executed.
+12:40:02 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+12:40:02 INFO  : Context for 'APU' is selected.
+12:40:03 INFO  : System reset is completed.
+12:40:06 INFO  : 'after 3000' command is executed.
+12:40:06 INFO  : Context for 'APU' is selected.
+12:40:06 INFO  : Cleared APU and A53 resets
+12:40:06 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+12:40:09 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+12:40:09 INFO  : Context for 'APU' is selected.
+12:40:10 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+12:40:10 INFO  : 'configparams force-mem-access 1' command is executed.
+12:40:10 INFO  : Context for 'APU' is selected.
+12:40:10 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+12:40:11 INFO  : 'psu_init' command is executed.
+12:40:12 INFO  : 'after 1000' command is executed.
+12:40:12 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+12:40:13 INFO  : 'after 1000' command is executed.
+12:40:13 INFO  : 'psu_ps_pl_reset_config' command is executed.
+12:40:13 INFO  : 'catch {psu_protection}' command is executed.
+12:40:13 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:40:13 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+12:40:13 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+12:40:13 INFO  : 'configparams force-mem-access 0' command is executed.
+12:40:13 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:40:14 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:40:14 INFO  : 'con' command is executed.
+12:40:14 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+12:40:14 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+12:45:27 INFO  : Disconnected from the channel tcfchan#18.
+12:45:28 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:45:35 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+12:45:35 INFO  : 'jtag frequency' command is executed.
+12:45:35 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+12:45:35 INFO  : Context for 'APU' is selected.
+12:45:36 INFO  : System reset is completed.
+12:45:39 INFO  : 'after 3000' command is executed.
+12:45:39 INFO  : Context for 'APU' is selected.
+12:45:39 INFO  : Cleared APU and A53 resets
+12:45:40 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+12:45:43 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+12:45:43 INFO  : Context for 'APU' is selected.
+12:45:43 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+12:45:43 INFO  : 'configparams force-mem-access 1' command is executed.
+12:45:43 INFO  : Context for 'APU' is selected.
+12:45:43 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+12:45:44 INFO  : 'psu_init' command is executed.
+12:45:45 INFO  : 'after 1000' command is executed.
+12:45:45 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+12:45:46 INFO  : 'after 1000' command is executed.
+12:45:46 INFO  : 'psu_ps_pl_reset_config' command is executed.
+12:45:46 INFO  : 'catch {psu_protection}' command is executed.
+12:45:46 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:45:46 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+12:45:47 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+12:45:47 INFO  : 'configparams force-mem-access 0' command is executed.
+12:45:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:45:47 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:45:47 INFO  : 'con' command is executed.
+12:45:47 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+12:45:47 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+12:47:52 INFO  : Disconnected from the channel tcfchan#19.
+12:47:53 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:48:01 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+12:48:01 INFO  : 'jtag frequency' command is executed.
+12:48:01 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+12:48:01 INFO  : Context for 'APU' is selected.
+12:48:02 INFO  : System reset is completed.
+12:48:05 INFO  : 'after 3000' command is executed.
+12:48:05 INFO  : Context for 'APU' is selected.
+12:48:05 INFO  : Cleared APU and A53 resets
+12:48:05 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+12:48:09 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+12:48:09 INFO  : Context for 'APU' is selected.
+12:48:09 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+12:48:09 INFO  : 'configparams force-mem-access 1' command is executed.
+12:48:09 INFO  : Context for 'APU' is selected.
+12:48:09 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+12:48:10 INFO  : 'psu_init' command is executed.
+12:48:11 INFO  : 'after 1000' command is executed.
+12:48:11 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+12:48:12 INFO  : 'after 1000' command is executed.
+12:48:12 INFO  : 'psu_ps_pl_reset_config' command is executed.
+12:48:12 INFO  : 'catch {psu_protection}' command is executed.
+12:48:12 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:48:12 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+12:48:13 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+12:48:13 INFO  : 'configparams force-mem-access 0' command is executed.
+12:48:13 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:48:13 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:48:13 INFO  : 'con' command is executed.
+12:48:13 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+12:48:13 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+12:49:14 INFO  : Disconnected from the channel tcfchan#20.
+12:49:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:49:22 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+12:49:22 INFO  : 'jtag frequency' command is executed.
+12:49:22 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+12:49:22 INFO  : Context for 'APU' is selected.
+12:49:23 INFO  : System reset is completed.
+12:49:26 INFO  : 'after 3000' command is executed.
+12:49:26 INFO  : Context for 'APU' is selected.
+12:49:26 INFO  : Cleared APU and A53 resets
+12:49:26 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+12:49:30 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+12:49:30 INFO  : Context for 'APU' is selected.
+12:49:30 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+12:49:30 INFO  : 'configparams force-mem-access 1' command is executed.
+12:49:30 INFO  : Context for 'APU' is selected.
+12:49:30 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+12:49:31 INFO  : 'psu_init' command is executed.
+12:49:32 INFO  : 'after 1000' command is executed.
+12:49:32 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+12:49:33 INFO  : 'after 1000' command is executed.
+12:49:33 INFO  : 'psu_ps_pl_reset_config' command is executed.
+12:49:33 INFO  : 'catch {psu_protection}' command is executed.
+12:49:33 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:49:34 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+12:49:34 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+12:49:34 INFO  : 'configparams force-mem-access 0' command is executed.
+12:49:34 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:49:34 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:49:34 INFO  : 'con' command is executed.
+12:49:34 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+12:49:34 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+12:50:23 INFO  : Disconnected from the channel tcfchan#21.
+12:50:24 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:50:32 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+12:50:32 INFO  : 'jtag frequency' command is executed.
+12:50:32 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+12:50:32 INFO  : Context for 'APU' is selected.
+12:50:33 INFO  : System reset is completed.
+12:50:36 INFO  : 'after 3000' command is executed.
+12:50:36 INFO  : Context for 'APU' is selected.
+12:50:36 INFO  : Cleared APU and A53 resets
+12:50:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+12:50:40 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+12:50:40 INFO  : Context for 'APU' is selected.
+12:50:40 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+12:50:40 INFO  : 'configparams force-mem-access 1' command is executed.
+12:50:40 INFO  : Context for 'APU' is selected.
+12:50:40 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+12:50:41 INFO  : 'psu_init' command is executed.
+12:50:42 INFO  : 'after 1000' command is executed.
+12:50:42 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+12:50:43 INFO  : 'after 1000' command is executed.
+12:50:43 INFO  : 'psu_ps_pl_reset_config' command is executed.
+12:50:43 INFO  : 'catch {psu_protection}' command is executed.
+12:50:43 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:50:44 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+12:50:44 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+12:50:44 INFO  : 'configparams force-mem-access 0' command is executed.
+12:50:44 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:50:44 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+12:50:44 INFO  : 'con' command is executed.
+12:50:44 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+12:50:44 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+14:14:36 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1564837664636,  Project:1564772147933
+14:14:36 INFO  : Project IP_Test_wrapper_hw_platform_0's source hardware specification located at E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+14:14:53 INFO  : Copied contents of E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper.hdf into \IP_Test_wrapper_hw_platform_0\system.hdf.
+14:15:09 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+14:15:20 INFO  : 
+14:15:21 INFO  : Updating hardware inferred compiler options for AXI_Test.
+14:15:21 INFO  : Clearing existing target manager status.
+14:15:21 INFO  : Closing and re-opening the MSS file of ther project AXI_Test_bsp
+14:15:21 INFO  : Closing and re-opening the MSS file of ther project AXI_Test_bsp
+14:15:21 INFO  : Closing and re-opening the MSS file of ther project AXI_Test_bsp
+14:15:21 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+14:15:24 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+14:19:26 INFO  : Disconnected from the channel tcfchan#22.
+14:19:28 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:19:29 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+14:19:29 INFO  : 'jtag frequency' command is executed.
+14:19:29 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+14:19:29 INFO  : Context for 'APU' is selected.
+14:19:30 INFO  : System reset is completed.
+14:19:33 INFO  : 'after 3000' command is executed.
+14:19:33 INFO  : Context for 'APU' is selected.
+14:19:33 INFO  : Cleared APU and A53 resets
+14:19:33 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+14:19:36 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+14:19:37 INFO  : Context for 'APU' is selected.
+14:19:37 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+14:19:37 INFO  : 'configparams force-mem-access 1' command is executed.
+14:19:37 INFO  : Context for 'APU' is selected.
+14:19:37 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+14:19:38 INFO  : 'psu_init' command is executed.
+14:19:39 INFO  : 'after 1000' command is executed.
+14:19:39 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+14:19:40 INFO  : 'after 1000' command is executed.
+14:19:40 INFO  : 'psu_ps_pl_reset_config' command is executed.
+14:19:40 INFO  : 'catch {psu_protection}' command is executed.
+14:19:40 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:19:40 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+14:19:41 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+14:19:41 INFO  : 'configparams force-mem-access 0' command is executed.
+14:19:41 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:19:41 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:19:41 INFO  : 'con' command is executed.
+14:19:41 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+14:19:41 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+14:23:06 INFO  : Disconnected from the channel tcfchan#23.
+14:23:07 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:23:15 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+14:23:15 INFO  : 'jtag frequency' command is executed.
+14:23:15 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+14:23:15 INFO  : Context for 'APU' is selected.
+14:23:16 INFO  : System reset is completed.
+14:23:19 INFO  : 'after 3000' command is executed.
+14:23:19 INFO  : Context for 'APU' is selected.
+14:23:19 INFO  : Cleared APU and A53 resets
+14:23:19 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+14:23:23 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+14:23:23 INFO  : Context for 'APU' is selected.
+14:23:23 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+14:23:23 INFO  : 'configparams force-mem-access 1' command is executed.
+14:23:23 INFO  : Context for 'APU' is selected.
+14:23:23 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+14:23:24 INFO  : 'psu_init' command is executed.
+14:23:25 INFO  : 'after 1000' command is executed.
+14:23:25 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+14:23:26 INFO  : 'after 1000' command is executed.
+14:23:26 INFO  : 'psu_ps_pl_reset_config' command is executed.
+14:23:26 INFO  : 'catch {psu_protection}' command is executed.
+14:23:26 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:23:26 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+14:23:27 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+14:23:27 INFO  : 'configparams force-mem-access 0' command is executed.
+14:23:27 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:23:27 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:23:27 INFO  : 'con' command is executed.
+14:23:27 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+14:23:27 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+14:30:59 INFO  : Disconnected from the channel tcfchan#24.
+14:31:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:31:01 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+14:31:01 INFO  : 'jtag frequency' command is executed.
+14:31:01 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+14:31:01 INFO  : Context for 'APU' is selected.
+14:31:02 INFO  : System reset is completed.
+14:31:05 INFO  : 'after 3000' command is executed.
+14:31:05 INFO  : Context for 'APU' is selected.
+14:31:05 INFO  : Cleared APU and A53 resets
+14:31:05 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+14:31:08 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+14:31:08 INFO  : Context for 'APU' is selected.
+14:31:08 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+14:31:08 INFO  : 'configparams force-mem-access 1' command is executed.
+14:31:08 INFO  : Context for 'APU' is selected.
+14:31:08 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+14:31:10 INFO  : 'psu_init' command is executed.
+14:31:11 INFO  : 'after 1000' command is executed.
+14:31:11 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+14:31:12 INFO  : 'after 1000' command is executed.
+14:31:12 INFO  : 'psu_ps_pl_reset_config' command is executed.
+14:31:12 INFO  : 'catch {psu_protection}' command is executed.
+14:31:12 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:31:12 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+14:31:12 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+14:31:12 INFO  : 'configparams force-mem-access 0' command is executed.
+14:31:12 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:31:12 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:31:12 INFO  : 'con' command is executed.
+14:31:12 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+14:31:12 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+14:32:56 INFO  : Disconnected from the channel tcfchan#25.
+14:32:57 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:32:57 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+14:32:57 INFO  : 'jtag frequency' command is executed.
+14:32:57 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+14:32:57 INFO  : Context for 'APU' is selected.
+14:32:58 INFO  : System reset is completed.
+14:33:02 INFO  : 'after 3000' command is executed.
+14:33:02 INFO  : Context for 'APU' is selected.
+14:33:02 INFO  : Cleared APU and A53 resets
+14:33:02 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+14:33:05 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+14:33:05 INFO  : Context for 'APU' is selected.
+14:33:05 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+14:33:05 INFO  : 'configparams force-mem-access 1' command is executed.
+14:33:05 INFO  : Context for 'APU' is selected.
+14:33:05 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+14:33:06 INFO  : 'psu_init' command is executed.
+14:33:07 INFO  : 'after 1000' command is executed.
+14:33:07 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+14:33:08 INFO  : 'after 1000' command is executed.
+14:33:08 INFO  : 'psu_ps_pl_reset_config' command is executed.
+14:33:09 INFO  : 'catch {psu_protection}' command is executed.
+14:33:09 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:33:09 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+14:33:09 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+14:33:09 INFO  : 'configparams force-mem-access 0' command is executed.
+14:33:09 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:33:09 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:33:09 INFO  : 'con' command is executed.
+14:33:09 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+14:33:09 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+14:34:21 INFO  : Disconnected from the channel tcfchan#26.
+14:34:22 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:34:23 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+14:34:23 INFO  : 'jtag frequency' command is executed.
+14:34:23 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+14:34:23 INFO  : Context for 'APU' is selected.
+14:34:24 INFO  : System reset is completed.
+14:34:27 INFO  : 'after 3000' command is executed.
+14:34:27 INFO  : Context for 'APU' is selected.
+14:34:27 INFO  : Cleared APU and A53 resets
+14:34:27 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+14:34:30 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+14:34:30 INFO  : Context for 'APU' is selected.
+14:34:30 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+14:34:30 INFO  : 'configparams force-mem-access 1' command is executed.
+14:34:30 INFO  : Context for 'APU' is selected.
+14:34:30 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+14:34:31 INFO  : 'psu_init' command is executed.
+14:34:32 INFO  : 'after 1000' command is executed.
+14:34:32 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+14:34:33 INFO  : 'after 1000' command is executed.
+14:34:33 INFO  : 'psu_ps_pl_reset_config' command is executed.
+14:34:33 INFO  : 'catch {psu_protection}' command is executed.
+14:34:33 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:34:34 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+14:34:34 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+14:34:34 INFO  : 'configparams force-mem-access 0' command is executed.
+14:34:34 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:34:34 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:34:34 INFO  : 'con' command is executed.
+14:34:34 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+14:34:34 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+14:46:42 INFO  : Disconnected from the channel tcfchan#27.
+14:46:43 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:46:43 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+14:46:43 INFO  : 'jtag frequency' command is executed.
+14:46:43 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+14:46:43 INFO  : Context for 'APU' is selected.
+14:46:44 INFO  : System reset is completed.
+14:46:47 INFO  : 'after 3000' command is executed.
+14:46:47 INFO  : Context for 'APU' is selected.
+14:46:48 INFO  : Cleared APU and A53 resets
+14:46:48 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+14:46:51 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+14:46:51 INFO  : Context for 'APU' is selected.
+14:46:51 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+14:46:51 INFO  : 'configparams force-mem-access 1' command is executed.
+14:46:51 INFO  : Context for 'APU' is selected.
+14:46:51 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+14:46:52 INFO  : 'psu_init' command is executed.
+14:46:53 INFO  : 'after 1000' command is executed.
+14:46:53 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+14:46:54 INFO  : 'after 1000' command is executed.
+14:46:54 INFO  : 'psu_ps_pl_reset_config' command is executed.
+14:46:54 INFO  : 'catch {psu_protection}' command is executed.
+14:46:54 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:46:54 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+14:46:55 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+14:46:55 INFO  : 'configparams force-mem-access 0' command is executed.
+14:46:55 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:46:55 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:46:55 INFO  : 'con' command is executed.
+14:46:55 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+14:46:55 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+14:51:12 INFO  : Disconnected from the channel tcfchan#28.
+14:51:13 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:51:14 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+14:51:14 INFO  : 'jtag frequency' command is executed.
+14:51:14 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+14:51:14 INFO  : Context for 'APU' is selected.
+14:51:15 INFO  : System reset is completed.
+14:51:18 INFO  : 'after 3000' command is executed.
+14:51:18 INFO  : Context for 'APU' is selected.
+14:51:18 INFO  : Cleared APU and A53 resets
+14:51:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+14:51:21 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+14:51:21 INFO  : Context for 'APU' is selected.
+14:51:21 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+14:51:21 INFO  : 'configparams force-mem-access 1' command is executed.
+14:51:21 INFO  : Context for 'APU' is selected.
+14:51:21 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+14:51:23 INFO  : 'psu_init' command is executed.
+14:51:24 INFO  : 'after 1000' command is executed.
+14:51:24 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+14:51:25 INFO  : 'after 1000' command is executed.
+14:51:25 INFO  : 'psu_ps_pl_reset_config' command is executed.
+14:51:25 INFO  : 'catch {psu_protection}' command is executed.
+14:51:25 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:51:25 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+14:51:25 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+14:51:25 INFO  : 'configparams force-mem-access 0' command is executed.
+14:51:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:51:25 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:51:25 INFO  : 'con' command is executed.
+14:51:25 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+14:51:25 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+14:56:36 INFO  : Disconnected from the channel tcfchan#29.
+14:56:37 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:56:37 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+14:56:37 INFO  : 'jtag frequency' command is executed.
+14:56:37 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+14:56:37 INFO  : Context for 'APU' is selected.
+14:56:38 INFO  : System reset is completed.
+14:56:41 INFO  : 'after 3000' command is executed.
+14:56:41 INFO  : Context for 'APU' is selected.
+14:56:41 INFO  : Cleared APU and A53 resets
+14:56:42 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+14:56:45 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+14:56:45 INFO  : Context for 'APU' is selected.
+14:56:45 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+14:56:45 INFO  : 'configparams force-mem-access 1' command is executed.
+14:56:45 INFO  : Context for 'APU' is selected.
+14:56:45 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+14:56:46 INFO  : 'psu_init' command is executed.
+14:56:47 INFO  : 'after 1000' command is executed.
+14:56:47 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+14:56:48 INFO  : 'after 1000' command is executed.
+14:56:48 INFO  : 'psu_ps_pl_reset_config' command is executed.
+14:56:48 INFO  : 'catch {psu_protection}' command is executed.
+14:56:48 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:56:48 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+14:56:49 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+14:56:49 INFO  : 'configparams force-mem-access 0' command is executed.
+14:56:49 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:56:49 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:56:49 INFO  : 'con' command is executed.
+14:56:49 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+14:56:49 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+14:59:31 INFO  : Disconnected from the channel tcfchan#30.
+14:59:32 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:59:32 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+14:59:32 INFO  : 'jtag frequency' command is executed.
+14:59:32 INFO  : Sourcing of 'Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+14:59:32 INFO  : Context for 'APU' is selected.
+14:59:33 INFO  : System reset is completed.
+14:59:36 INFO  : 'after 3000' command is executed.
+14:59:36 INFO  : Context for 'APU' is selected.
+14:59:36 INFO  : Cleared APU and A53 resets
+14:59:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+14:59:39 INFO  : FPGA configured successfully with bitstream "E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+14:59:40 INFO  : Context for 'APU' is selected.
+14:59:40 INFO  : Hardware design information is loaded from 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+14:59:40 INFO  : 'configparams force-mem-access 1' command is executed.
+14:59:40 INFO  : Context for 'APU' is selected.
+14:59:40 INFO  : Sourcing of 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+14:59:41 INFO  : 'psu_init' command is executed.
+14:59:42 INFO  : 'after 1000' command is executed.
+14:59:42 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+14:59:43 INFO  : 'after 1000' command is executed.
+14:59:43 INFO  : 'psu_ps_pl_reset_config' command is executed.
+14:59:43 INFO  : 'catch {psu_protection}' command is executed.
+14:59:43 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:59:43 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+14:59:43 INFO  : The application 'E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+14:59:43 INFO  : 'configparams force-mem-access 0' command is executed.
+14:59:43 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source Z:/Vivado/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow E:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:59:43 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:59:44 INFO  : 'con' command is executed.
+14:59:44 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+14:59:44 INFO  : Launch script is exported to file 'E:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+15:20:41 INFO  : Disconnected from the channel tcfchan#31.
+14:51:45 INFO  : Registering command handlers for SDK TCF services
+14:51:47 INFO  : Launching XSCT server: xsct.bat -interactive G:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\temp_xsdb_launch_script.tcl
+14:51:51 INFO  : XSCT server has started successfully.
+14:51:51 INFO  : Successfully done setting XSCT server connection channel  
+14:51:56 INFO  : Successfully done setting SDK workspace  
+14:51:56 INFO  : Processing command line option -hwspec G:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper.hdf.
+14:59:24 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:59:25 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+14:59:25 INFO  : 'jtag frequency' command is executed.
+14:59:25 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+14:59:25 INFO  : Context for 'APU' is selected.
+14:59:26 INFO  : System reset is completed.
+14:59:29 INFO  : 'after 3000' command is executed.
+14:59:29 INFO  : Context for 'APU' is selected.
+14:59:29 INFO  : Cleared APU and A53 resets
+14:59:29 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+14:59:32 INFO  : FPGA configured successfully with bitstream "G:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+14:59:32 INFO  : Context for 'APU' is selected.
+14:59:33 INFO  : Hardware design information is loaded from 'G:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+14:59:33 INFO  : 'configparams force-mem-access 1' command is executed.
+14:59:33 INFO  : Context for 'APU' is selected.
+14:59:33 INFO  : Sourcing of 'G:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+14:59:34 INFO  : 'psu_init' command is executed.
+14:59:35 INFO  : 'after 1000' command is executed.
+14:59:35 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+14:59:36 INFO  : 'after 1000' command is executed.
+14:59:36 INFO  : 'psu_ps_pl_reset_config' command is executed.
+14:59:36 INFO  : 'catch {psu_protection}' command is executed.
+14:59:36 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:59:36 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+14:59:37 INFO  : The application 'G:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+14:59:37 INFO  : 'configparams force-mem-access 0' command is executed.
+14:59:37 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file G:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw G:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source G:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow G:/AXI_TESTS/MemoryTest_IP_Test/MemoryTest_IP_Test.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:59:37 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+14:59:37 INFO  : 'con' command is executed.
+14:59:37 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+14:59:37 INFO  : Launch script is exported to file 'G:\AXI_TESTS\MemoryTest_IP_Test\MemoryTest_IP_Test.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+14:55:53 INFO  : Registering command handlers for SDK TCF services
+14:55:54 INFO  : Launching XSCT server: xsct.bat -interactive D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\temp_xsdb_launch_script.tcl
+14:55:56 INFO  : XSCT server has started successfully.
+14:55:57 INFO  : Successfully done setting XSCT server connection channel  
+14:55:57 INFO  : Processing command line option -hwspec D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper.hdf.
+14:55:57 INFO  : Successfully done setting SDK workspace  
+14:57:52 INFO  : Refreshed build settings on project MemoryTestBlock_example_hw_2
+15:01:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:01:12 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+15:01:12 INFO  : 'jtag frequency' command is executed.
+15:01:12 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+15:01:12 INFO  : Context for 'APU' is selected.
+15:01:13 INFO  : System reset is completed.
+15:01:16 INFO  : 'after 3000' command is executed.
+15:01:16 INFO  : Context for 'APU' is selected.
+15:01:16 INFO  : Cleared APU and A53 resets
+15:01:16 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+15:01:20 INFO  : FPGA configured successfully with bitstream "D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+15:01:20 INFO  : Context for 'APU' is selected.
+15:01:20 INFO  : Hardware design information is loaded from 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+15:01:20 INFO  : 'configparams force-mem-access 1' command is executed.
+15:01:20 INFO  : Context for 'APU' is selected.
+15:01:20 INFO  : Sourcing of 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+15:01:21 INFO  : 'psu_init' command is executed.
+15:01:22 INFO  : 'after 1000' command is executed.
+15:01:22 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+15:01:23 INFO  : 'after 1000' command is executed.
+15:01:23 INFO  : 'psu_ps_pl_reset_config' command is executed.
+15:01:23 INFO  : 'catch {psu_protection}' command is executed.
+15:01:23 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:01:23 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+15:01:24 INFO  : The application 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+15:01:24 INFO  : 'configparams force-mem-access 0' command is executed.
+15:01:24 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:01:24 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:01:24 INFO  : 'con' command is executed.
+15:01:24 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+15:01:24 INFO  : Launch script is exported to file 'D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+15:03:54 INFO  : Disconnected from the channel tcfchan#1.
+15:04:08 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:04:09 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+15:04:09 INFO  : 'jtag frequency' command is executed.
+15:04:09 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+15:04:09 INFO  : Context for 'APU' is selected.
+15:04:10 INFO  : System reset is completed.
+15:04:13 INFO  : 'after 3000' command is executed.
+15:04:13 INFO  : Context for 'APU' is selected.
+15:04:13 INFO  : Cleared APU and A53 resets
+15:04:13 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+15:04:16 INFO  : FPGA configured successfully with bitstream "D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_2/IP_Test_wrapper.bit"
+15:04:16 INFO  : Context for 'APU' is selected.
+15:04:17 INFO  : Hardware design information is loaded from 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_2/system.hdf'.
+15:04:17 INFO  : 'configparams force-mem-access 1' command is executed.
+15:04:17 INFO  : Context for 'APU' is selected.
+15:04:17 INFO  : Sourcing of 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_2/psu_init.tcl' is done.
+15:04:18 INFO  : 'psu_init' command is executed.
+15:04:19 INFO  : 'after 1000' command is executed.
+15:04:19 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+15:04:20 INFO  : 'after 1000' command is executed.
+15:04:20 INFO  : 'psu_ps_pl_reset_config' command is executed.
+15:04:20 INFO  : 'catch {psu_protection}' command is executed.
+15:04:20 INFO  : 'configparams force-mem-access 0' command is executed.
+15:04:20 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_2/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_2/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_2/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:04:20 INFO  : Launch script is exported to file 'D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_on_local.tcl'
+15:04:37 INFO  : Disconnected from the channel tcfchan#2.
+15:04:38 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:04:44 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+15:04:44 INFO  : 'jtag frequency' command is executed.
+15:04:44 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+15:04:44 INFO  : Context for 'APU' is selected.
+15:04:45 INFO  : System reset is completed.
+15:04:48 INFO  : 'after 3000' command is executed.
+15:04:49 INFO  : Context for 'APU' is selected.
+15:04:49 INFO  : Cleared APU and A53 resets
+15:04:49 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+15:04:52 INFO  : FPGA configured successfully with bitstream "D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+15:04:52 INFO  : Context for 'APU' is selected.
+15:04:52 INFO  : Hardware design information is loaded from 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+15:04:52 INFO  : 'configparams force-mem-access 1' command is executed.
+15:04:52 INFO  : Context for 'APU' is selected.
+15:04:52 INFO  : Sourcing of 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+15:04:54 INFO  : 'psu_init' command is executed.
+15:04:55 INFO  : 'after 1000' command is executed.
+15:04:55 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+15:04:56 INFO  : 'after 1000' command is executed.
+15:04:56 INFO  : 'psu_ps_pl_reset_config' command is executed.
+15:04:56 INFO  : 'catch {psu_protection}' command is executed.
+15:04:56 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:04:56 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+15:04:56 INFO  : The application 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+15:04:56 INFO  : 'configparams force-mem-access 0' command is executed.
+15:04:56 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:04:56 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:04:56 INFO  : 'con' command is executed.
+15:04:56 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+15:04:56 INFO  : Launch script is exported to file 'D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+15:08:13 INFO  : Disconnected from the channel tcfchan#3.
+15:08:14 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:08:15 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+15:08:15 INFO  : 'jtag frequency' command is executed.
+15:08:15 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+15:08:15 INFO  : Context for 'APU' is selected.
+15:08:16 INFO  : System reset is completed.
+15:08:19 INFO  : 'after 3000' command is executed.
+15:08:19 INFO  : Context for 'APU' is selected.
+15:08:19 INFO  : Cleared APU and A53 resets
+15:08:19 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+15:08:22 INFO  : FPGA configured successfully with bitstream "D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+15:08:22 INFO  : Context for 'APU' is selected.
+15:08:22 INFO  : Hardware design information is loaded from 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+15:08:22 INFO  : 'configparams force-mem-access 1' command is executed.
+15:08:22 INFO  : Context for 'APU' is selected.
+15:08:22 INFO  : Sourcing of 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+15:08:23 INFO  : 'psu_init' command is executed.
+15:08:24 INFO  : 'after 1000' command is executed.
+15:08:24 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+15:08:25 INFO  : 'after 1000' command is executed.
+15:08:25 INFO  : 'psu_ps_pl_reset_config' command is executed.
+15:08:25 INFO  : 'catch {psu_protection}' command is executed.
+15:08:26 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:08:26 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+15:08:26 INFO  : The application 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+15:08:26 INFO  : 'configparams force-mem-access 0' command is executed.
+15:08:26 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:08:26 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:08:26 INFO  : 'con' command is executed.
+15:08:26 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+15:08:26 INFO  : Launch script is exported to file 'D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+15:09:12 INFO  : Disconnected from the channel tcfchan#4.
+15:09:13 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:09:13 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+15:09:13 INFO  : 'jtag frequency' command is executed.
+15:09:13 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+15:09:13 INFO  : Context for 'APU' is selected.
+15:09:14 INFO  : System reset is completed.
+15:09:17 INFO  : 'after 3000' command is executed.
+15:09:17 INFO  : Context for 'APU' is selected.
+15:09:18 INFO  : Cleared APU and A53 resets
+15:09:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+15:09:21 INFO  : FPGA configured successfully with bitstream "D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+15:09:21 INFO  : Context for 'APU' is selected.
+15:09:21 INFO  : Hardware design information is loaded from 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+15:09:21 INFO  : 'configparams force-mem-access 1' command is executed.
+15:09:21 INFO  : Context for 'APU' is selected.
+15:09:21 INFO  : Sourcing of 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+15:09:22 INFO  : 'psu_init' command is executed.
+15:09:23 INFO  : 'after 1000' command is executed.
+15:09:23 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+15:09:24 INFO  : 'after 1000' command is executed.
+15:09:24 INFO  : 'psu_ps_pl_reset_config' command is executed.
+15:09:24 INFO  : 'catch {psu_protection}' command is executed.
+15:09:24 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:09:24 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+15:09:25 INFO  : The application 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+15:09:25 INFO  : 'configparams force-mem-access 0' command is executed.
+15:09:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:09:25 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:09:25 INFO  : 'con' command is executed.
+15:09:25 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+15:09:25 INFO  : Launch script is exported to file 'D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+15:13:31 INFO  : Disconnected from the channel tcfchan#5.
+15:13:32 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:13:33 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+15:13:33 INFO  : 'jtag frequency' command is executed.
+15:13:33 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+15:13:33 INFO  : Context for 'APU' is selected.
+15:13:34 INFO  : System reset is completed.
+15:13:37 INFO  : 'after 3000' command is executed.
+15:13:37 INFO  : Context for 'APU' is selected.
+15:13:37 INFO  : Cleared APU and A53 resets
+15:13:37 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+15:13:40 INFO  : FPGA configured successfully with bitstream "D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+15:13:40 INFO  : Context for 'APU' is selected.
+15:13:40 INFO  : Hardware design information is loaded from 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+15:13:40 INFO  : 'configparams force-mem-access 1' command is executed.
+15:13:40 INFO  : Context for 'APU' is selected.
+15:13:40 INFO  : Sourcing of 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+15:13:41 INFO  : 'psu_init' command is executed.
+15:13:42 INFO  : 'after 1000' command is executed.
+15:13:43 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+15:13:44 INFO  : 'after 1000' command is executed.
+15:13:44 INFO  : 'psu_ps_pl_reset_config' command is executed.
+15:13:44 INFO  : 'catch {psu_protection}' command is executed.
+15:13:44 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:13:44 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+15:13:44 INFO  : The application 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+15:13:44 INFO  : 'configparams force-mem-access 0' command is executed.
+15:13:44 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:13:44 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:13:44 INFO  : 'con' command is executed.
+15:13:44 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+15:13:44 INFO  : Launch script is exported to file 'D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+15:15:33 INFO  : Disconnected from the channel tcfchan#6.
+15:15:34 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:15:35 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+15:15:35 INFO  : 'jtag frequency' command is executed.
+15:15:35 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+15:15:35 INFO  : Context for 'APU' is selected.
+15:15:36 INFO  : System reset is completed.
+15:15:39 INFO  : 'after 3000' command is executed.
+15:15:39 INFO  : Context for 'APU' is selected.
+15:15:39 INFO  : Cleared APU and A53 resets
+15:15:39 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+15:15:42 INFO  : FPGA configured successfully with bitstream "D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+15:15:43 INFO  : Context for 'APU' is selected.
+15:15:43 INFO  : Hardware design information is loaded from 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+15:15:43 INFO  : 'configparams force-mem-access 1' command is executed.
+15:15:43 INFO  : Context for 'APU' is selected.
+15:15:43 INFO  : Sourcing of 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+15:15:44 INFO  : 'psu_init' command is executed.
+15:15:45 INFO  : 'after 1000' command is executed.
+15:15:45 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+15:15:46 INFO  : 'after 1000' command is executed.
+15:15:46 INFO  : 'psu_ps_pl_reset_config' command is executed.
+15:15:46 INFO  : 'catch {psu_protection}' command is executed.
+15:15:46 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:15:46 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+15:15:46 INFO  : The application 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+15:15:46 INFO  : 'configparams force-mem-access 0' command is executed.
+15:15:46 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:15:46 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:15:46 INFO  : 'con' command is executed.
+15:15:46 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+15:15:46 INFO  : Launch script is exported to file 'D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+15:17:38 INFO  : Disconnected from the channel tcfchan#7.
+15:17:39 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:17:40 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+15:17:40 INFO  : 'jtag frequency' command is executed.
+15:17:40 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+15:17:40 INFO  : Context for 'APU' is selected.
+15:17:40 INFO  : System reset is completed.
+15:17:44 INFO  : 'after 3000' command is executed.
+15:17:44 INFO  : Context for 'APU' is selected.
+15:17:44 INFO  : Cleared APU and A53 resets
+15:17:44 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+15:17:47 INFO  : FPGA configured successfully with bitstream "D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+15:17:47 INFO  : Context for 'APU' is selected.
+15:17:47 INFO  : Hardware design information is loaded from 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+15:17:47 INFO  : 'configparams force-mem-access 1' command is executed.
+15:17:47 INFO  : Context for 'APU' is selected.
+15:17:47 INFO  : Sourcing of 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+15:17:48 INFO  : 'psu_init' command is executed.
+15:17:49 INFO  : 'after 1000' command is executed.
+15:17:49 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+15:17:50 INFO  : 'after 1000' command is executed.
+15:17:50 INFO  : 'psu_ps_pl_reset_config' command is executed.
+15:17:50 INFO  : 'catch {psu_protection}' command is executed.
+15:17:50 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:17:50 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+15:17:51 INFO  : The application 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+15:17:51 INFO  : 'configparams force-mem-access 0' command is executed.
+15:17:51 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:17:51 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:17:51 INFO  : 'con' command is executed.
+15:17:51 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+15:17:51 INFO  : Launch script is exported to file 'D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+15:18:24 INFO  : Disconnected from the channel tcfchan#8.
+15:18:25 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:18:25 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+15:18:25 INFO  : 'jtag frequency' command is executed.
+15:18:25 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+15:18:25 INFO  : Context for 'APU' is selected.
+15:18:26 INFO  : System reset is completed.
+15:18:30 INFO  : 'after 3000' command is executed.
+15:18:30 INFO  : Context for 'APU' is selected.
+15:18:30 INFO  : Cleared APU and A53 resets
+15:18:30 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+15:18:33 INFO  : FPGA configured successfully with bitstream "D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+15:18:33 INFO  : Context for 'APU' is selected.
+15:18:33 INFO  : Hardware design information is loaded from 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+15:18:33 INFO  : 'configparams force-mem-access 1' command is executed.
+15:18:33 INFO  : Context for 'APU' is selected.
+15:18:33 INFO  : Sourcing of 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+15:18:34 INFO  : 'psu_init' command is executed.
+15:18:35 INFO  : 'after 1000' command is executed.
+15:18:35 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+15:18:36 INFO  : 'after 1000' command is executed.
+15:18:36 INFO  : 'psu_ps_pl_reset_config' command is executed.
+15:18:36 INFO  : 'catch {psu_protection}' command is executed.
+15:18:36 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:18:36 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+15:18:37 INFO  : The application 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+15:18:37 INFO  : 'configparams force-mem-access 0' command is executed.
+15:18:37 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:18:37 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:18:37 INFO  : 'con' command is executed.
+15:18:37 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+15:18:37 INFO  : Launch script is exported to file 'D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+15:21:00 INFO  : Disconnected from the channel tcfchan#9.
+15:21:01 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:21:01 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+15:21:01 INFO  : 'jtag frequency' command is executed.
+15:21:01 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+15:21:01 INFO  : Context for 'APU' is selected.
+15:21:02 INFO  : System reset is completed.
+15:21:05 INFO  : 'after 3000' command is executed.
+15:21:05 INFO  : Context for 'APU' is selected.
+15:21:06 INFO  : Cleared APU and A53 resets
+15:21:06 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+15:21:09 INFO  : FPGA configured successfully with bitstream "D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+15:21:09 INFO  : Context for 'APU' is selected.
+15:21:09 INFO  : Hardware design information is loaded from 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+15:21:09 INFO  : 'configparams force-mem-access 1' command is executed.
+15:21:09 INFO  : Context for 'APU' is selected.
+15:21:09 INFO  : Sourcing of 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+15:21:10 INFO  : 'psu_init' command is executed.
+15:21:11 INFO  : 'after 1000' command is executed.
+15:21:11 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+15:21:12 INFO  : 'after 1000' command is executed.
+15:21:12 INFO  : 'psu_ps_pl_reset_config' command is executed.
+15:21:12 INFO  : 'catch {psu_protection}' command is executed.
+15:21:12 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:21:12 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+15:21:13 INFO  : The application 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+15:21:13 INFO  : 'configparams force-mem-access 0' command is executed.
+15:21:13 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:21:13 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:21:13 INFO  : 'con' command is executed.
+15:21:13 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+15:21:13 INFO  : Launch script is exported to file 'D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+15:22:10 INFO  : Disconnected from the channel tcfchan#10.
+15:22:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:22:11 INFO  : Jtag cable 'Avnet USB-to-JTAG/UART Pod V1 1234-oj1A' is selected.
+15:22:11 INFO  : 'jtag frequency' command is executed.
+15:22:11 INFO  : Sourcing of 'D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl' is done.
+15:22:11 INFO  : Context for 'APU' is selected.
+15:22:12 INFO  : System reset is completed.
+15:22:15 INFO  : 'after 3000' command is executed.
+15:22:15 INFO  : Context for 'APU' is selected.
+15:22:16 INFO  : Cleared APU and A53 resets
+15:22:16 INFO  : 'targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0' command is executed.
+15:22:19 INFO  : FPGA configured successfully with bitstream "D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit"
+15:22:19 INFO  : Context for 'APU' is selected.
+15:22:19 INFO  : Hardware design information is loaded from 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf'.
+15:22:19 INFO  : 'configparams force-mem-access 1' command is executed.
+15:22:19 INFO  : Context for 'APU' is selected.
+15:22:19 INFO  : Sourcing of 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl' is done.
+15:22:20 INFO  : 'psu_init' command is executed.
+15:22:21 INFO  : 'after 1000' command is executed.
+15:22:21 INFO  : 'psu_ps_pl_isolation_removal' command is executed.
+15:22:22 INFO  : 'after 1000' command is executed.
+15:22:22 INFO  : 'psu_ps_pl_reset_config' command is executed.
+15:22:22 INFO  : 'catch {psu_protection}' command is executed.
+15:22:22 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:22:22 INFO  : Processor reset is completed for 'psu_cortexa53_0'.
+15:22:23 INFO  : The application 'D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf' is downloaded to processor 'psu_cortexa53_0'.
+15:22:23 INFO  : 'configparams force-mem-access 0' command is executed.
+15:22:23 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source D:/Xilinx/SDK/2018.2/scripts/sdk/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+reset_apu
+targets -set -filter {jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A" && level==0} -index 0
+fpga -file D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/IP_Test_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+loadhw -hw D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/system.hdf -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}]
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+source D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/IP_Test_wrapper_hw_platform_0/psu_init.tcl
+psu_init
+after 1000
+psu_ps_pl_isolation_removal
+after 1000
+psu_ps_pl_reset_config
+catch {psu_protection}
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+rst -processor
+dow D:/Xilinx/MemoryTestBlock_example/MemoryTestBlock_example.sdk/AXI_Test/Debug/AXI_Test.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:22:23 INFO  : Context for processor 'psu_cortexa53_0' is selected.
+15:22:23 INFO  : 'con' command is executed.
+15:22:23 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~"*A53*0" && jtag_cable_name =~ "Avnet USB-to-JTAG/UART Pod V1 1234-oj1A"} -index 1
+con
+----------------End of Script----------------
+
+15:22:23 INFO  : Launch script is exported to file 'D:\Xilinx\MemoryTestBlock_example\MemoryTestBlock_example.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_axi_test.elf_on_local.tcl'
+14:02:49 INFO  : Disconnected from the channel tcfchan#11.

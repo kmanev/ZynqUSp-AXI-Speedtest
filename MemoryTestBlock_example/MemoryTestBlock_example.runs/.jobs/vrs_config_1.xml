@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="IP_Test_MemoryTestBlock_0_0_synth_1" LaunchDir="G:/AXI_TESTS/MemoryTestBlock_example/MemoryTestBlock_example.runs/IP_Test_MemoryTestBlock_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="IP_Test_MemoryTestBlock_1_0_synth_1" LaunchDir="G:/AXI_TESTS/MemoryTestBlock_example/MemoryTestBlock_example.runs/IP_Test_MemoryTestBlock_1_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="IP_Test_MemoryTestBlock_0_0_synth_1"/>
+	</Run>
+	<Run Id="IP_Test_MemoryTestBlock_2_0_synth_1" LaunchDir="G:/AXI_TESTS/MemoryTestBlock_example/MemoryTestBlock_example.runs/IP_Test_MemoryTestBlock_2_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="IP_Test_MemoryTestBlock_0_0_synth_1"/>
+	</Run>
+	<Run Id="IP_Test_MemoryTestBlock_3_0_synth_1" LaunchDir="G:/AXI_TESTS/MemoryTestBlock_example/MemoryTestBlock_example.runs/IP_Test_MemoryTestBlock_3_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="IP_Test_MemoryTestBlock_0_0_synth_1"/>
+	</Run>
+	<Run Id="synth_1" LaunchDir="G:/AXI_TESTS/MemoryTestBlock_example/MemoryTestBlock_example.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="IP_Test_MemoryTestBlock_0_0_synth_1"/>
+		<Parent Id="IP_Test_MemoryTestBlock_1_0_synth_1"/>
+		<Parent Id="IP_Test_MemoryTestBlock_2_0_synth_1"/>
+		<Parent Id="IP_Test_MemoryTestBlock_3_0_synth_1"/>
+	</Run>
+	<Run Id="impl_1" LaunchDir="G:/AXI_TESTS/MemoryTestBlock_example/MemoryTestBlock_example.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+		<Parent Id="synth_1"/>
+		<Parent Id="IP_Test_MemoryTestBlock_0_0_synth_1"/>
+		<Parent Id="IP_Test_MemoryTestBlock_1_0_synth_1"/>
+		<Parent Id="IP_Test_MemoryTestBlock_2_0_synth_1"/>
+		<Parent Id="IP_Test_MemoryTestBlock_3_0_synth_1"/>
+	</Run>
+</Runs>
+
