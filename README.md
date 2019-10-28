@@ -19,7 +19,10 @@ Backup results available in this git in the "Experiment Results FPT2019" folder.
 
 ## Memory Testing Module
 
-The memory testing module is packaged as an IP for easier use. The module contains other IPs provided by Xilinx to instantiate some primitives such as BlockRams. This IP is located in the "IP" folder and once added to a Vivado project, can be instantiated as any other IP in the Xilinx Vivado toolchain. Our IP is packaged using Vivado 18.2.1.
+The memory testing module is packaged as an IP for easier use.
+The module contains other IPs provided by Xilinx to instantiate some primitives such as BlockRams.
+This IP is located in the "IP" folder and once added to a Vivado project, can be instantiated as any other IP in the Xilinx Vivado toolchain.
+This IP is packaged using Vivado 18.2.1.
 
 
 <a name="memtesttutorial"/>
@@ -58,5 +61,7 @@ Example state of the project so far:
 13. Export the hardware by File->Export->Export Hardware. Tick “Include Bitstream”.
 14. Start SDK by File->Launch SDK.
 15. In SDK create a new “Hello World” application project. Use the exported hardware and generate a new BSP.
-
+16. Allocate most of the available DDR memory in the heap in the linker file (lscript.ld).
+17. Copy the example driver source code (IP/Driver Example/helloworld.c) in your main C file.
+18. Compile and upload on an FPGA.
 
