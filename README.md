@@ -30,13 +30,13 @@ The memory testing module is packaged as an IP for easier use. The module contai
 2. Create Block Design
 3. Instantiate Zynq Ultrascale+ MPSoC
 4. Configure Zynq UltraScale+ MPSoC according to the used board and:
-    * Add one or multiple HP AXI ports to be tested 
+    * Add one or multiple HP AXI ports to be tested.
     * Add one master AXI port - AXI HPM0 FPD.
-    * Configure desired DDR organisation
-    * Configure desired clock frequency
+    * Configure desired DDR organisation.
+    * Configure desired clock frequency.
   
 Example state of the project so far:
-
+![Project state so far](https://raw.githubusercontent.com/kmanev/ZynqUSp-AXI-Speedtest/master/IP/Tutorial_Img/1.png)
 
 Download “MemoryTestBlock.zip” and unzip it.
 In Vivado, open Tools->Settings->IP->Repository->Add, and navigate to the folder with the unzipped contents.
